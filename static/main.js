@@ -19,7 +19,7 @@ getBooks()
 const getBooksByKeyword = async() => {
     keyword = document.getElementById("search-input").value;
 
-    url = new URL(`http://data4library.kr/api/srchBooks?format=json&keyword=${keyword}&authKey=${API_KEY}`)
+    url = new URL(`http://data4library.kr/api/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}`)
 
     getBooks()
 }
