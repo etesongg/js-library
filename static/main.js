@@ -3,7 +3,7 @@ const API_KEY = config.librarykey;
 let bookList = [];
 let keyword = ""
 
-let url = new URL(`http://data4library.kr/api/libSrch?format=json&authKey=${API_KEY}`);
+let url = new URL(`http://data4library.kr/api/libSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
 
 const getBooks = async() => {
     const response = await fetch(url);
@@ -19,7 +19,7 @@ getBooks()
 const getBooksByKeyword = async() => {
     keyword = document.getElementById("search-input").value;
 
-    url = new URL(`http://data4library.kr/api/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}`)
+    url = new URL(`http://data4library.kr/api/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}&pageNo=1&pageSize=5`)
 
     getBooks()
 }
