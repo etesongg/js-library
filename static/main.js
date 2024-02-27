@@ -18,3 +18,9 @@ const getBooksByKeyword = async() => {
 
     getBooks()
 }
+
+const enterkey = () => {
+    if(window.event.keyCode == 13){
+        getBooksByKeyword();
+    }
+}
