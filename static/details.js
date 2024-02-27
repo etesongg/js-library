@@ -8,7 +8,7 @@ const ISBN = "9788934971351" // 예시 ISBN number, 실제 번호 받을 예정
 // let catalogingByLibrary_Url = new URL(`http://data4library.kr/api/libSrch?format=json&authKey=${API_KEY}`);
 
 <!-- 도서검색 -->
-let srchBooks_Url = new URL(`http://data4library.kr/api/srchBooks?format=json&authKey=${API_KEY}&isbn13="${ISBN}"`);
+let srchBooks_Url = new URL(`http://data4library.kr/api/srchBooks?format=json&authKey=${API_KEY}&isbn13="${ISBN}"&pageNo=1&pageSize=5`);
 
 <!-- 도서기본정보 불러오는 함수 -->
 const aboutbooks = async () => {
