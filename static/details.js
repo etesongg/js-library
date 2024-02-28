@@ -40,7 +40,7 @@ aboutbooks();
 function displayBookInfo(info) {
     document.querySelector('.details-book-information-section figure').innerHTML = `<img src="${info.imageUrl}" alt="도서 이미지">`;
     document.querySelector('.details-book-information-section article').innerHTML = `
-        <h2>${info.title}</h2>
+        <h5><b>${info.title}</b></h5>
         <p>저자: ${info.author}</p>
         <p>출판사: ${info.publisher}</p>
         <p>출판연도: ${info.publication_year}</p>
