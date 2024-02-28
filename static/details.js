@@ -1,4 +1,3 @@
-const API_KEY = config.librarykey;
 const ISBN = "9788934971351" // 예시 ISBN number, 실제 번호 받을 예정
 
 // <!-- 정보공개 도서관 조회 - 도서관 주소, 연락처, 홈페이지-->
@@ -7,10 +6,10 @@ const ISBN = "9788934971351" // 예시 ISBN number, 실제 번호 받을 예정
 // <!-- 도서관별 장서 대출 데이터 조회 - 도서명, 저자명, 출판사 등 -->
 // let catalogingByLibrary_Url = new URL(`http://data4library.kr/api/libSrch?format=json&authKey=${API_KEY}`);
 
-<!-- 도서검색 -->
+// <!-- 도서검색 -->
 let srchBooks_Url = new URL(`http://data4library.kr/api/srchBooks?format=json&authKey=${API_KEY}&isbn13="${ISBN}"&pageNo=1&pageSize=5`);
 
-<!-- 도서기본정보 불러오는 함수 -->
+// <!-- 도서기본정보 불러오는 함수 -->
 const aboutbooks = async () => {
     try {
         const response = await fetch(srchBooks_Url);
