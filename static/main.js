@@ -69,28 +69,20 @@ const searchRender = () => {
   document.getElementById("books-board").innerHTML = booksHTML;
 };
 
-const enterkey = () => {
-<<<<<<< HEAD
-    if(window.event.keyCode == 13){
-        getBooksByKeyword();
-    }
-}
-
-
 
 <!-- 인기대출도서 조회 -->
-let popularBooks_Url = new URL(`http://data4library.kr/api/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
+let popularBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
 
 <!-- 인기대출도서 불러오는 함수 -->
 const popularBooks = async () => {
     try {
-        const response2 = await fetch(popularBooks_Url);
-        const data2 = await response2.json();
-        const popularBooksList = data2.response.docs;
+        const responsePopular = await fetch(popularBooks_Url);
+        const dataPopular = await responsePopular.json();
+        const popularBooksList = dataPopular.response.docs;
         console.log(popularBooksList);
 
         const resultHTML = popularBooksList.map(book => { return `
-            <article>
+            <article class="swiper-slide">
                 <a href="${book.doc.bookDtlUrl}" target="_blank">
                     <p class="book-rank">${book.doc.ranking}</p>
                     <figure>
@@ -102,7 +94,7 @@ const popularBooks = async () => {
             </article>
         `}).join('');
 
-        document.querySelector('#popular-books-section .slider-wrap').innerHTML = resultHTML;
+        document.querySelector('#popular-books-section .swiper-wrapper').innerHTML = resultHTML;
         
     } catch (error) {
         console.error('Fetching book data failed', error);
@@ -111,9 +103,31 @@ const popularBooks = async () => {
 
 popularBooks();
 
-=======
+window.onload = function() {
+  var swiper = new Swiper("#popular-books-section .swiper", {
+      speed: 700,
+      slidesPerView: 4,
+      spaceBetween: 0,
+      centeredSlides: true,
+      autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+      },
+      pagination: {
+          el: "#popular-books-section .swiper-pagination",
+          clickable: true,
+      },
+      navigation: {
+        nextEl: '#popular-books-section .swiper-button-next',
+        prevEl: '#popular-books-section .swiper-button-prev',
+      },
+  });
+}
+
+
+
+const enterkey = () => {
   if (window.event.keyCode == 13) {
     getBooksByKeyword();
   }
 };
->>>>>>> a26e2cfddd4e2afee1beede17db323f4be2cdd8b
