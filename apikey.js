@@ -1,3 +1,3 @@
 const config = {
-	librarykey: "020095ae8efe1fc1a10f12992a92f18891418baee0ebe0930f337f4d42fe7035"};
+	librarykey: "8b0605d4b9c9ec27688116c7b289a8f2cf2ab220359f3f4c5d0c495745f88ce0"};
 
