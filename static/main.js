@@ -31,17 +31,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const getBooksByKeyword = async () => {
   keyword = document.getElementById("search-input").value;
-
-  url = new URL(
-    `https://librarybooksbyjs.netlify.app/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}&pageNo=1&pageSize=5`
-  );
-
-  const response = await fetch(url);
-  const data = await response.json();
-  bookList = data.response.docs;
-  console.log("LLL", bookList);
-  // searchRender 부분
-  searchRender();
+  if (keyword == "") {
+    Swal.fire({
+      icon: 'warning',                        
+      title: '검색어를 입력하세요.'      
+  });
+  } else {
+    url = new URL(
+      `https://librarybooksbyjs.netlify.app/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}&pageNo=1&pageSize=5`
+    );
+    const response = await fetch(url);
+    const data = await response.json();
+    bookList = data.response.docs;
+    console.log("LLL", bookList);
+    searchRender();
+  }
 };
 
 const searchRender = () => {
@@ -55,7 +59,7 @@ const searchRender = () => {
                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEWgS0uxxEYJ0PsOb2OgwyWvC0Gjp8NUdPw&usqp=CAU"
                 }" />
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-8 books-content">
         <h5>${books.doc.bookname}</h5>
         <br>
         <p>저자 : ${books.doc.authors}</p>

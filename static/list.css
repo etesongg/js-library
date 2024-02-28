@@ -1,7 +1,3 @@
-.container{
-    text-align: center;
-}
-
 .books {
     border-bottom: 1px solid black;
 }
@@ -22,6 +18,9 @@
     padding-top : 23px;
     padding-bottom : 23px;
 }
+.books-content {
+    padding-top: 23px;
+} 
 
 #seeMore-btn {
     margin: 20px;
