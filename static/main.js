@@ -66,7 +66,7 @@ const searchRender = () => {
 </div>`
     )
     .join("");
-  document.getElementById("books-board").innerHTML = booksHTML;
+  document.getElementById("main").innerHTML = booksHTML;
 };
 
 const enterkey = () => {
