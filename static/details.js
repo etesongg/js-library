@@ -1,4 +1,3 @@
-const API_KEY = config.librarykey;
 const ISBN = "9788934971351" // 예시 ISBN number, 실제 번호 받을 예정
 
 // <!-- 정보공개 도서관 조회 - 도서관 주소, 연락처, 홈페이지-->
