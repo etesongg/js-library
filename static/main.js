@@ -66,7 +66,7 @@ const searchRender = () => {
 </div>`
     )
     .join("");
-  document.getElementById("books-board").innerHTML = booksHTML;
+  document.getElementById("main").innerHTML = booksHTML;
 };
 
 
@@ -126,8 +126,8 @@ window.onload = function() {
 
 
 
-const enterkey = () => {
+function enterkey() {
   if (window.event.keyCode == 13) {
     getBooksByKeyword();
   }
-};
+}
