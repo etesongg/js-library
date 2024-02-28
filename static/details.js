@@ -1,4 +1,4 @@
-import config from apikey.js
+import config from "/apikey.js"
 const API_KEY = config.librarykey;
 const ISBN = "9791161571188" // 예시 ISBN number, 실제 번호 받을 예정
 
