@@ -1,0 +1,27 @@
+.container{
+    text-align: center;
+}
+
+.books {
+    border-bottom: 1px solid black;
+}
+
+.books h5 {
+    text-align: left;
+}
+
+.books p {
+    font-size: 15px;
+    text-align: left;
+    line-height: 0.3;
+}
+
+.books-img-size {
+    max-width: 100%;
+    max-height: 200px;
+    padding-bottom : 23px;
+}
+
+#seeMore-btn {
+    margin: 20px;
+}
