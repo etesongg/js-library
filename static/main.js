@@ -83,14 +83,12 @@ const popularBooks = async () => {
 
         const resultHTML = popularBooksList.map(book => { return `
             <article class="swiper-slide">
-                <a href="${book.doc.bookDtlUrl}" target="_blank">
-                    <p class="book-rank">${book.doc.ranking}</p>
-                    <figure>
-                        <img src="${book.doc.bookImageURL}" alt="${book.doc.bookname}">
-                    </figure>
-                    <p class="book-title">${book.doc.bookname}</p>
-                    <p class="book-authers">${book.doc.authors}</p>
-                </a>
+              <p class="book-rank">${book.doc.ranking}</p>
+              <figure>
+                  <img src="${book.doc.bookImageURL}" alt="${book.doc.bookname}">
+              </figure>
+              <p class="book-title"><a href="${book.doc.bookDtlUrl}" target="_blank">${book.doc.bookname}</a></p>
+              <p class="book-authers">${book.doc.authors}</p>
             </article>
         `}).join('');
 
