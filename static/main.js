@@ -38,7 +38,6 @@ const getBooksByKeyword = async () => {
 
   const response = await fetch(url);
   const data = await response.json();
-  console.log("ddd", data)
   bookList = data.response.docs;
   console.log("LLL", bookList);
   // searchRender 부분
