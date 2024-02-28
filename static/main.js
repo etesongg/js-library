@@ -1,3 +1,5 @@
+import config from '../apikey.js'
+
 const API_KEY = config.librarykey;
 
 let bookList = [];
