@@ -1,4 +1,4 @@
-import config from '../apikey'
+import config from '../apikey.js'
 
 const API_KEY = config.librarykey;
 
