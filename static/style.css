@@ -1,3 +1,51 @@
+@font-face {
+    font-family: 'BMHANNAPro';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.0/BMHANNAPro.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --swiper-theme-color: #138496;
+}
+
 .container{
     text-align: center;
+}
+
+#books-section {
+    width: calc(100% - 40px);
+    margin:0 auto;
+    padding:50px 0;
+}
+
+#books-section section {
+    padding:50px 0;
+}
+
+#books-section h2 {
+    font-family: 'BMHANNAPro', sans-serif;
+    font-size: 23px;
+    margin-bottom: 30px;
+}
+
+#books-section figure img {
+    width: 100%;
+}
+
+.swiper-button-next, 
+.swiper-button-prev {
+    width:50px;
+    height:100%;
+    top:0;
+}
+
+footer {
+    padding:50px 0;
+    background:#dadada;
+}
+
+footer img {
+    opacity:0.5;
+    height:20px;
 }
