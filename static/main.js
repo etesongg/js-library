@@ -139,8 +139,8 @@ trendingBooks();
 window.onload = function() {
   var swiper = new Swiper(".swiper", {
       speed: 700,
-      slidesPerView: 4,
-      spaceBetween: 0,
+      slidesPerView: 6,
+      spaceBetween: 40,
       centeredSlides: true,
       autoplay: {
           delay: 3000,
