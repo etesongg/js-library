@@ -59,10 +59,10 @@ const searchRender = () => {
 };
 
 
-<!-- 인기대출도서 조회 -->
+// <!-- 인기대출도서 조회 -->
 let popularBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
 
-<!-- 인기대출도서 불러오는 함수 -->
+// <!-- 인기대출도서 불러오는 함수 -->
 const popularBooks = async () => {
     try {
         const responsePopular = await fetch(popularBooks_Url);
