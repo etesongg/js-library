@@ -70,7 +70,7 @@ const searchRender = () => {
 
 
 // 인기대출도서 조회 
-let popularBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
+let popularBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=10`);
 // let popularBooks_Url = new URL(`http://data4library.kr/api/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
 
 // 인기대출도서 불러오는 함수 
@@ -104,7 +104,7 @@ popularBooks();
 
 
 // 대출 급상승 조회
-let trendingBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-28&pageNo=1&pageSize=5`);
+let trendingBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-27`);
 // let trendingBooks_Url = new URL(`http://data4library.kr/api/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-27`);
 
 // 대출 급상승 불러오는 함수
@@ -141,14 +141,10 @@ window.onload = function() {
       speed: 700,
       slidesPerView: 6,
       spaceBetween: 40,
-      centeredSlides: true,
+      // centeredSlides: true,
       autoplay: {
           delay: 3000,
           disableOnInteraction: false,
-      },
-      pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
       },
       navigation: {
         nextEl: '.swiper-button-next',

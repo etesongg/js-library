@@ -35,9 +35,15 @@
 
 .swiper-button-next, 
 .swiper-button-prev {
-    width:50px;
-    height:100%;
-    top:0;
+    width:70px;
+    height:70px;
+    background-color:#17a2b8;
+    color:#fff;
+    border-radius: 50%;
+}
+.swiper-button-next:after, 
+.swiper-button-prev:after {
+    font-size:25px;
 }
 
 footer {
