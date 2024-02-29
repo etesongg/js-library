@@ -15,6 +15,14 @@ document.addEventListener("DOMContentLoaded", function () {
 const getBooksByKeyword = async () => {
   keyword = document.getElementById("search-input").value;
 
+  // 경고창
+  if (keyword == "") {
+    Swal.fire({
+      icon: 'warning',                        
+      title: '검색어를 입력하세요.'      
+  });
+  }
+
   url = new URL(
     `https://librarybooksbyjs.netlify.app/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}&pageNo=1&pageSize=5`
   );
@@ -43,7 +51,7 @@ const searchRender = () => {
                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEWgS0uxxEYJ0PsOb2OgwyWvC0Gjp8NUdPw&usqp=CAU"
                 }" />
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-8 books-content">
         <h5>${books.doc.bookname}</h5>
         <br>
         <p>저자 : ${books.doc.authors}</p>
@@ -58,10 +66,10 @@ const searchRender = () => {
 };
 
 
-// <!-- 인기대출도서 조회 -->
+// 인기대출도서 조회 
 let popularBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
 
-// <!-- 인기대출도서 불러오는 함수 -->
+// 인기대출도서 불러오는 함수 
 const popularBooks = async () => {
     try {
         const responsePopular = await fetch(popularBooks_Url);

@@ -17,6 +17,9 @@
     padding-top : 23px;
     padding-bottom : 23px;
 }
+.books-content {
+    padding-top: 23px;
+} 
 
 #seeMore-btn {
     margin: 20px;
