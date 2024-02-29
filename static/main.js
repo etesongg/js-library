@@ -29,7 +29,6 @@ const getBooksByKeyword = async () => {
 
   bookList = data.response.docs;
   console.log("LLL", bookList);
-  // searchRender 부분
   searchRender();
 };
 
