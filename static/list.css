@@ -2,18 +2,15 @@
   border-bottom: 1px solid black;
 }
 
-.books h5 {
-  text-align: left;
-}
-
-.books p {
-  font-size: 15px;
-  text-align: left;
+.img-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .books-img-size {
-  max-width: 100%;
-  max-height: 200px;
+  width: 130px;
+  height: 220px;
   padding-top: 23px;
   padding-bottom: 23px;
 }
@@ -21,7 +18,19 @@
   padding-top: 23px;
 }
 
+#book-name {
+  font-size: 23px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.books-content p {
+  font-size: 15px;
+  text-align: left;
+}
+
 #seeMore-btn {
   margin: 20px;
+  float: right;
   border-radius: 10px;
 }
