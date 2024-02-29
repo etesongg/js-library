@@ -1,7 +1,13 @@
+<link rel="stylesheet" type="text/css" href="header.css">
+
+
 <header>
     <h1>독서의 민족</h1>
     <div id="search-area">
-        <input type="text" name="" id="">
-        <button>검색</button>
+        <input type="text" id="search-input" onkeyup="enterkey()" placeholder="책 제목을 입력하세요"/>
+        <button onclick="getBooksByKeyword()">검색</button>
+        <div>
+            <span class="search_result"></span>
+        </div>
     </div>
 </header>
