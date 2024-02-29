@@ -34,6 +34,7 @@ async function srchDtlList() {
                 borrowingRank: ageInfo.age.ranking,
             });
         });  
+        dropdownOptionRender()
 };
 
 
@@ -70,4 +71,50 @@ function borrowingTrend(info) {
                     <td>${info.borrowingRank}</td>
                 </tr>`;
     tbody.innerHTML += row; // 기존 행에 추가
+}
+
+
+// 도서 소장 도서관 부분
+const regionInfo = libraryinfo.dtl_region;
+const selectElement = document.getElementById("area-select-option");
+
+// option들의 click 이벤트를 추가
+selectElement.addEventListener("click", (event) => {
+    const selectedDtlRegion = event.target.value;
+    filterLibRender(selectedDtlRegion);
+});
+
+// 지역구 나타내는 함수
+const dropdownOptionRender = () => {
+    let dtlRegionList = Object.entries(regionInfo);
+
+    const dtlRegionHTML = dtlRegionList.map(region => {
+        let dtlRegion = region[0]
+        let splitRegion = region[1].split(" ")[1]
+        return `<option value="${dtlRegion}">${splitRegion}</option>`;
+    }).join("");
+    selectElement.innerHTML = dtlRegionHTML;
+
+    // option 초기 선택을 없애기
+    selectElement.selectedIndex = -1;
+}
+
+const filterLibRender = async(dtlRegion) => {
+    let collectionBookURL = new URL(`http://data4library.kr/api/libSrchByBook?format=json&authKey=${API_KEY}&isbn=${ISBN}&region=11&dtl_region=${dtlRegion}`)
+    const response_ = await fetch(collectionBookURL)
+    const data_ = await response_.json()
+    const libList = data_.response.libs
+
+    const libTable = document.querySelector(".lib-place table tbody");
+    libTable.innerHTML = '';  // 이전 내용 삭제
+
+    const filterLibHTML = libList.map((lib) => {
+        return `<tr>
+            <td>${lib.lib.libName}</td>
+            <td>${lib.lib.homepage}</td>
+            <td>${lib.lib.address}</td>
+        </tr>`;
+    }).join("");
+    
+    libTable.innerHTML = filterLibHTML;  // 새로운 내용 추가
 }
