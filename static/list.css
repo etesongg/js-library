@@ -9,7 +9,6 @@
 .books p {
     font-size: 15px;
     text-align: left;
-    line-height: 0.3;
 }
 
 .books-img-size {
@@ -18,6 +17,9 @@
     padding-top : 23px;
     padding-bottom : 23px;
 }
+.books-content {
+    padding-top: 23px;
+} 
 
 #seeMore-btn {
     margin: 20px;
