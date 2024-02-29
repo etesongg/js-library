@@ -18,9 +18,9 @@ const getBooksByKeyword = async () => {
   // 경고창
   if (keyword == "") {
     Swal.fire({
-      icon: 'warning',                        
-      title: '검색어를 입력하세요.'      
-  });
+      icon: "warning",
+      title: "검색어를 입력하세요.",
+    });
   }
 
   url = new URL(
@@ -65,19 +65,22 @@ const searchRender = () => {
   document.getElementById("main").innerHTML = booksHTML;
 };
 
+// 인기대출도서 조회
+let popularBooks_Url = new URL(
+  `https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`
+);
 
-// 인기대출도서 조회 
-let popularBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
-
-// 인기대출도서 불러오는 함수 
+// 인기대출도서 불러오는 함수
 const popularBooks = async () => {
-    try {
-        const responsePopular = await fetch(popularBooks_Url);
-        const dataPopular = await responsePopular.json();
-        const popularBooksList = dataPopular.response.docs;
-        console.log(popularBooksList);
+  try {
+    const responsePopular = await fetch(popularBooks_Url);
+    const dataPopular = await responsePopular.json();
+    const popularBooksList = dataPopular.response.docs;
+    console.log(popularBooksList);
 
-        const resultHTML = popularBooksList.map(book => { return `
+    const resultHTML = popularBooksList
+      .map((book) => {
+        return `
             <article class="swiper-slide">
               <p class="book-rank">${book.doc.ranking}</p>
               <figure>
@@ -86,39 +89,39 @@ const popularBooks = async () => {
               <p class="book-title"><a href="${book.doc.bookDtlUrl}" target="_blank">${book.doc.bookname}</a></p>
               <p class="book-authers">${book.doc.authors}</p>
             </article>
-        `}).join('');
+        `;
+      })
+      .join("");
 
-        document.querySelector('#popular-books-section .swiper-wrapper').innerHTML = resultHTML;
-        
-    } catch (error) {
-        console.error('Fetching book data failed', error);
-    }
+    document.querySelector("#popular-books-section .swiper-wrapper").innerHTML =
+      resultHTML;
+  } catch (error) {
+    console.error("Fetching book data failed", error);
+  }
 };
 
 popularBooks();
 
-window.onload = function() {
+window.onload = function () {
   var swiper = new Swiper("#popular-books-section .swiper", {
-      speed: 700,
-      slidesPerView: 4,
-      spaceBetween: 0,
-      centeredSlides: true,
-      autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-      },
-      pagination: {
-          el: "#popular-books-section .swiper-pagination",
-          clickable: true,
-      },
-      navigation: {
-        nextEl: '#popular-books-section .swiper-button-next',
-        prevEl: '#popular-books-section .swiper-button-prev',
-      },
+    speed: 700,
+    slidesPerView: 4,
+    spaceBetween: 0,
+    centeredSlides: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: "#popular-books-section .swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: "#popular-books-section .swiper-button-next",
+      prevEl: "#popular-books-section .swiper-button-prev",
+    },
   });
-}
-
-
+};
 
 function enterkey() {
   if (window.event.keyCode == 13) {
