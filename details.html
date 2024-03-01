@@ -62,6 +62,21 @@
                 </article>
         </section>
     </div>
+
+
+
+    <div>
+            <h4> 도서 소장 도서관</h4>
+            <h6>지역별 도서 소장 도서관을 조회합니다.</h6>
+            <select id="regionSelect" onchange="onRegionChange()">
+                <option value="">지역 선택...</option>
+                <option value="서울">서울</option>
+                <option value="부산">부산</option>
+                <option value="인천">인천</option>
+              </select>
+              <ul id="libraryList"></ul>
+    </div>
+
     <script src="apikey.js"></script>
     <script src="static/details.js"></script>
 </main>
