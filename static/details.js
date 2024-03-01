@@ -1,6 +1,8 @@
 // const API_KEY = config.librarykey;
-const ISBN = "9791161571188" // 예시 ISBN number, 실제 번호 받을 예정
-
+// const ISBN = "9791161571188" // 예시 ISBN number, 실제 번호 받을 예정
+// 쿼리에 isbn이 있으면 그 값 가져와서 ISBN이라는 변수로 지정하기
+const queryParams = new URLSearchParams(window.location.search);
+const ISBN = queryParams.get('isbn');
 // <!-- 정보공개 도서관 조회 - 도서관 주소, 연락처, 홈페이지-->
 // let libraryLookup_Url = new URL(`https://librarybooksbyjs.netlify.app/libSrch?format=json&authKey=${API_KEY}`);
 
