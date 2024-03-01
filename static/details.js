@@ -1,6 +1,8 @@
 // const API_KEY = config.librarykey;
-const ISBN = "9791161571188" // 예시 ISBN number, 실제 번호 받을 예정
-
+// const ISBN = "9791161571188" // 예시 ISBN number, 실제 번호 받을 예정
+// 쿼리에 isbn이 있으면 그 값 가져와서 ISBN이라는 변수로 지정하기
+const queryParams = new URLSearchParams(window.location.search);
+const ISBN = queryParams.get('isbn');
 // <!-- 정보공개 도서관 조회 - 도서관 주소, 연락처, 홈페이지-->
 // let libraryLookup_Url = new URL(`https://librarybooksbyjs.netlify.app/libSrch?format=json&authKey=${API_KEY}`);
 
@@ -10,8 +12,26 @@ const ISBN = "9791161571188" // 예시 ISBN number, 실제 번호 받을 예정
 // 도서 상세 조회
 let srchDtlList_Url = new URL(`http://data4library.kr/api/srchDtlList?format=json&authKey=${API_KEY}&isbn13=${ISBN}&loaninfoYN=Y&pageNo=1&pageSize=5`);
 
-// 도서 상세 불러오는 함수
+window.onload = function() {
+    dropdownOptionRender();
+};
 
+// 지역구 나타내는 함수 (initialization 에러로 함수 위치를 상단으로 올림)
+const dropdownOptionRender = () => {
+    let dtlRegionList = Object.entries(regionInfo);
+
+    const dtlRegionHTML = dtlRegionList.map(region => {
+        let dtlRegion = region[0]
+        let splitRegion = region[1].split(" ")[1]
+        return `<option value="${dtlRegion}">${splitRegion}</option>`;
+    }).join("");
+    selectElement.innerHTML = dtlRegionHTML;
+
+    // option 초기 선택을 없애기
+    selectElement.selectedIndex = -1;
+}
+
+// 도서 상세 불러오는 함수
 async function srchDtlList() {
     const response = await fetch(srchDtlList_Url);
     const data = await response.json();
@@ -35,6 +55,7 @@ async function srchDtlList() {
                 borrowingRank: ageInfo.age.ranking,
             });
         });  
+        dropdownOptionRender()
 };
 
 
@@ -71,4 +92,37 @@ function borrowingTrend(info) {
                     <td>${info.borrowingRank}</td>
                 </tr>`;
     tbody.innerHTML += row; // 기존 행에 추가
+}
+
+
+// 도서 소장 도서관 부분
+const regionInfo = libraryinfo.dtl_region;
+const selectElement = document.getElementById("area-select-option");
+
+// option들의 click 이벤트를 추가
+selectElement.addEventListener("click", (event) => {
+    const selectedDtlRegion = event.target.value;
+    filterLibRender(selectedDtlRegion);
+});
+
+
+
+const filterLibRender = async(dtlRegion) => {
+    let collectionBookURL = new URL(`http://data4library.kr/api/libSrchByBook?format=json&authKey=${API_KEY}&isbn=${ISBN}&region=11&dtl_region=${dtlRegion}`)
+    const response_ = await fetch(collectionBookURL)
+    const data_ = await response_.json()
+    const libList = data_.response.libs
+
+    const libTable = document.querySelector(".lib-place table tbody");
+    libTable.innerHTML = '';  // 이전 내용 삭제
+
+    const filterLibHTML = libList.map((lib) => {
+        return `<tr>
+            <td>${lib.lib.libName}</td>
+            <td>${lib.lib.homepage}</td>
+            <td>${lib.lib.address}</td>
+        </tr>`;
+    }).join("");
+    
+    libTable.innerHTML = filterLibHTML;  // 새로운 내용 추가
 }
