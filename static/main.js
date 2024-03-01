@@ -1,5 +1,3 @@
-import config from '../apikey.js'
-
 const API_KEY = config.librarykey;
 
 let bookList = [];
@@ -38,7 +36,7 @@ const getBooksByKeyword = async () => {
   ).innerHTML = `"${keyword}" 검색결과 ${numFound}건`;
 
   bookList = data.response.docs;
-  console.log("LLL", bookList);
+  console.log("키워드 검색결과", bookList);
   searchRender();
 };
 
@@ -69,8 +67,8 @@ const searchRender = () => {
 
 
 // 인기대출도서 조회 
-let popularBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
-// let popularBooks_Url = new URL(`http://data4library.kr/api/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
+// let popularBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
+let popularBooks_Url = new URL(`http://data4library.kr/api/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
 
 // 인기대출도서 불러오는 함수 
 const popularBooks = async () => {
@@ -78,7 +76,7 @@ const popularBooks = async () => {
         const responsePopular = await fetch(popularBooks_Url);
         const dataPopular = await responsePopular.json();
         const popularBooksList = dataPopular.response.docs;
-        console.log(popularBooksList);
+        console.log("인기대출도서",popularBooksList);
 
         const popularResult = popularBooksList.map(book => { return `
             <article class="swiper-slide">
@@ -103,8 +101,8 @@ popularBooks();
 
 
 // 대출 급상승 조회
-let trendingBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-28&pageNo=1&pageSize=5`);
-// let trendingBooks_Url = new URL(`http://data4library.kr/api/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-27`);
+// let trendingBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-28&pageNo=1&pageSize=5`);
+let trendingBooks_Url = new URL(`http://data4library.kr/api/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-27`);
 
 // 대출 급상승 불러오는 함수
 const trendingBooks = async () => {
@@ -112,7 +110,7 @@ const trendingBooks = async () => {
     const responseTrending = await fetch(trendingBooks_Url);
     const dataTrending = await responseTrending.json();
     const trendingBooksList = dataTrending.response.results[0].result.docs;
-    console.log(trendingBooksList);
+    console.log("대출 급상승",trendingBooksList);
 
     const trendingResult = trendingBooksList.map(book => { return `
       <article class="swiper-slide">
