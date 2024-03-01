@@ -1,4 +1,7 @@
-import config from "../apikey.js";
+// import config from "../apikey.js";
+const config = {
+	librarykey: "9d1ad31b4e1ab44b4d05bdb918eaa4447fb8168e2085f3beba4a2983c1368547"};
+
 
 const API_KEY = config.librarykey;
 
@@ -25,7 +28,7 @@ const getBooksByKeyword = async () => {
     });
   } else {
     url = new URL(
-      `https://librarybooksbyjs.netlify.app/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}&pageNo=1&pageSize=250`
+      `https://librarybooksbyjs.netlify.app/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}&pageNo=1&pageSize=5`
     );
 
     const response = await fetch(url);
