@@ -1,4 +1,5 @@
-var today = new Date();
+var now = new Date();
+var today = new Date(now.setDate(now.getDate() - 3));
 
 var year = today.getFullYear();
 var month = ('0' + (today.getMonth() + 1)).slice(-2);
@@ -62,11 +63,13 @@ const popularBooks = async () => {
       .map((book) => {
         return `
         <article class="swiper-slide">
-          <p class="book-rank">${book.doc.ranking}</p>
-          <figure>
-          <img style="max-width:100%;" src="${book.doc.bookImageURL}" alt="${book.doc.bookname}">
-          </figure>
-          <p class="book-title"><a href="index.html?page=details&isbn=${book.doc.isbn13}">${book.doc.bookname}</a></p>
+          <a href="index.html?page=details&isbn=${book.doc.isbn13}">
+            <p class="book-rank">${book.doc.ranking}</p>
+            <figure>
+            <img style="max-width:100%;" src="${book.doc.bookImageURL}" alt="${book.doc.bookname}">
+            </figure>
+            <p class="book-title">${book.doc.bookname}</p>
+          </a>
         </article>
         `;
       })
@@ -86,10 +89,9 @@ popularBooks();
 window.onload = function () {
   var swiper = new Swiper("#popular-books-section .swiper", {
     speed: 700,
-    slidesPerView: 5,
-    spaceBetween: 30,
+    slidesPerView: 2,
+    spaceBetween: 20,
     centeredSlides: true,
-    loop: true,
     autoplay: {
       delay: 3000,
       disableOnInteraction: false,
@@ -97,6 +99,20 @@ window.onload = function () {
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 3,  //브라우저가 768보다 클 때
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 4,  //브라우저가 1024보다 클 때
+        spaceBetween: 30,
+      },
+      1200: {
+        slidesPerView: 5,  //브라우저가 1024보다 클 때
+        spaceBetween: 30,
+      },
     },
   });
 };
