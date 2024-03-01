@@ -34,3 +34,13 @@
   float: right;
   border-radius: 10px;
 }
+
+.bd-example {
+  padding: 1rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
