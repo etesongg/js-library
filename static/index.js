@@ -23,7 +23,7 @@ const getBooksByKeyword = async () => {
     });
   } else {
     url = new URL(
-      `https://librarybooksbyjs.netlify.app/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}&pageNo=1&pageSize=5`
+      `https://librarybooksbyjs.netlify.app/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}&pageNo=1&pageSize=20`
     );
 
     const response = await fetch(url);
