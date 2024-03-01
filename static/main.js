@@ -1,3 +1,51 @@
+var today = new Date();
+
+var year = today.getFullYear();
+var month = ('0' + (today.getMonth() + 1)).slice(-2);
+var day = ('0' + today.getDate()).slice(-2);
+
+var dateString = year + '-' + month  + '-' + day;
+
+console.log(dateString);
+
+// 대출 급상승 조회
+// let trendingBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-28&pageNo=1&pageSize=5`);
+let trendingBooks_Url = new URL(`http://data4library.kr/api/hotTrend?format=json&authKey=${API_KEY}&searchDt=${dateString}`);
+
+// 대출 급상승 불러오는 함수
+const trendingBooks = async () => {
+  try {
+    const responseTrending = await fetch(trendingBooks_Url);
+    const dataTrending = await responseTrending.json();
+    const trendingBooksList = dataTrending.response.results[0].result.docs;
+    console.log("대출 급상승",trendingBooksList);
+
+    const trendingResult = trendingBooksList
+      .map((book) => {
+        return `
+        <article>
+            <a href="index.html?page=details&isbn=${book.doc.isbn13}">
+                <figure>
+                <img style="max-width:100%;" src="${book.doc.bookImageURL}" alt="${book.doc.bookname}">
+                </figure>
+                <p class="book-title"><a href="index.html?page=details&isbn=${book.doc.isbn13}">${book.doc.bookname}</a></p>
+                <p class="book-authers">${book.doc.authors}</p>
+            </a>
+        </article>
+    `;
+      })
+      .join("");
+
+    document.querySelector(
+      "#trending-loan-books-section .books-list"
+    ).innerHTML = trendingResult;
+  } catch (error) {
+    console.error("Fetching book data failed", error);
+  }
+};
+
+trendingBooks();
+
 // 인기대출도서 조회 
 // let popularBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
 let popularBooks_Url = new URL(`http://data4library.kr/api/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=10`);
@@ -13,14 +61,13 @@ const popularBooks = async () => {
     const popularResult = popularBooksList
       .map((book) => {
         return `
-            <article class="swiper-slide">
-              <p class="book-rank">${book.doc.ranking}</p>
-              <figure>
-                  <img style="max-width:100%;" src="${book.doc.bookImageURL}" alt="${book.doc.bookname}">
-              </figure>
-              <p class="book-title"><a href="index.html?page=details&isbn=${book.doc.isbn13}">${book.doc.bookname}</a></p>
-              <p class="book-authers">${book.doc.authors}</p>
-            </article>
+        <article class="swiper-slide">
+          <p class="book-rank">${book.doc.ranking}</p>
+          <figure>
+          <img style="max-width:100%;" src="${book.doc.bookImageURL}" alt="${book.doc.bookname}">
+          </figure>
+          <p class="book-title"><a href="index.html?page=details&isbn=${book.doc.isbn13}">${book.doc.bookname}</a></p>
+        </article>
         `;
       })
       .join("");
@@ -34,48 +81,15 @@ const popularBooks = async () => {
 
 popularBooks();
 
-// 대출 급상승 조회
-// let trendingBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-28&pageNo=1&pageSize=5`);
-let trendingBooks_Url = new URL(`http://data4library.kr/api/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-27&pageNo=1&pageSize=10`);
 
-// 대출 급상승 불러오는 함수
-const trendingBooks = async () => {
-  try {
-    const responseTrending = await fetch(trendingBooks_Url);
-    const dataTrending = await responseTrending.json();
-    const trendingBooksList = dataTrending.response.results[0].result.docs;
-    console.log("대출 급상승",trendingBooksList);
-
-    const trendingResult = trendingBooksList
-      .map((book) => {
-        return `
-      <article class="swiper-slide">
-        <p class="book-rank">${book.doc.no}</p>
-        <figure>
-            <img style="max-width:100%;" src="${book.doc.bookImageURL}" alt="${book.doc.bookname}">
-        </figure>
-        <p class="book-title"><a href="index.html?page=details&isbn=${book.doc.isbn13}">${book.doc.bookname}</a></p>
-        <p class="book-authers">${book.doc.authors}</p>
-      </article>
-    `;
-      })
-      .join("");
-
-    document.querySelector(
-      "#trending-loan-books-section .swiper-wrapper"
-    ).innerHTML = trendingResult;
-  } catch (error) {
-    console.error("Fetching book data failed", error);
-  }
-};
-
-trendingBooks();
 
 window.onload = function () {
-  var swiper = new Swiper(".swiper", {
+  var swiper = new Swiper("#popular-books-section .swiper", {
     speed: 700,
     slidesPerView: 5,
-    spaceBetween: 40,
+    spaceBetween: 30,
+    centeredSlides: true,
+    loop: true,
     autoplay: {
       delay: 3000,
       disableOnInteraction: false,
