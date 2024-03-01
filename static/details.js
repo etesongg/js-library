@@ -1,13 +1,5 @@
-// const API_KEY = config.librarykey;
-// const ISBN = "9791161571188" // 예시 ISBN number, 실제 번호 받을 예정
-// 쿼리에 isbn이 있으면 그 값 가져와서 ISBN이라는 변수로 지정하기
 const queryParams = new URLSearchParams(window.location.search);
 const ISBN = queryParams.get('isbn');
-// <!-- 정보공개 도서관 조회 - 도서관 주소, 연락처, 홈페이지-->
-// let libraryLookup_Url = new URL(`https://librarybooksbyjs.netlify.app/libSrch?format=json&authKey=${API_KEY}`);
-
-// <!-- 도서관별 장서 대출 데이터 조회 - 도서명, 저자명, 출판사 등 -->
-// let catalogingByLibrary_Url = new URL(`https://librarybooksbyjs.netlify.app/libSrch?format=json&authKey=${API_KEY}`);
 
 // 도서 상세 조회
 let srchDtlList_Url = new URL(`http://data4library.kr/api/srchDtlList?format=json&authKey=${API_KEY}&isbn13=${ISBN}&loaninfoYN=Y&pageNo=1&pageSize=5`);
@@ -35,7 +27,6 @@ const dropdownOptionRender = () => {
 async function srchDtlList() {
     const response = await fetch(srchDtlList_Url);
     const data = await response.json();
-    // console.log(data);
 
     displayBookInfo({
         imageUrl: data.response.detail[0].book.bookImageURL,
@@ -57,7 +48,6 @@ async function srchDtlList() {
         });  
         dropdownOptionRender()
 };
-
 
 srchDtlList();
 
