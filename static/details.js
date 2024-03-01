@@ -1,4 +1,4 @@
-const API_KEY = config.librarykey;
+// const API_KEY = config.librarykey;
 const ISBN = "9791161571188" // 예시 ISBN number, 실제 번호 받을 예정
 
 // <!-- 정보공개 도서관 조회 - 도서관 주소, 연락처, 홈페이지-->
@@ -10,8 +10,26 @@ const ISBN = "9791161571188" // 예시 ISBN number, 실제 번호 받을 예정
 // 도서 상세 조회
 let srchDtlList_Url = new URL(`http://data4library.kr/api/srchDtlList?format=json&authKey=${API_KEY}&isbn13=${ISBN}&loaninfoYN=Y&pageNo=1&pageSize=5`);
 
-// 도서 상세 불러오는 함수
+window.onload = function() {
+    dropdownOptionRender();
+};
 
+// 지역구 나타내는 함수 (initialization 에러로 함수 위치를 상단으로 올림)
+const dropdownOptionRender = () => {
+    let dtlRegionList = Object.entries(regionInfo);
+
+    const dtlRegionHTML = dtlRegionList.map(region => {
+        let dtlRegion = region[0]
+        let splitRegion = region[1].split(" ")[1]
+        return `<option value="${dtlRegion}">${splitRegion}</option>`;
+    }).join("");
+    selectElement.innerHTML = dtlRegionHTML;
+
+    // option 초기 선택을 없애기
+    selectElement.selectedIndex = -1;
+}
+
+// 도서 상세 불러오는 함수
 async function srchDtlList() {
     const response = await fetch(srchDtlList_Url);
     const data = await response.json();
@@ -85,20 +103,7 @@ selectElement.addEventListener("click", (event) => {
     filterLibRender(selectedDtlRegion);
 });
 
-// 지역구 나타내는 함수
-const dropdownOptionRender = () => {
-    let dtlRegionList = Object.entries(regionInfo);
 
-    const dtlRegionHTML = dtlRegionList.map(region => {
-        let dtlRegion = region[0]
-        let splitRegion = region[1].split(" ")[1]
-        return `<option value="${dtlRegion}">${splitRegion}</option>`;
-    }).join("");
-    selectElement.innerHTML = dtlRegionHTML;
-
-    // option 초기 선택을 없애기
-    selectElement.selectedIndex = -1;
-}
 
 const filterLibRender = async(dtlRegion) => {
     let collectionBookURL = new URL(`http://data4library.kr/api/libSrchByBook?format=json&authKey=${API_KEY}&isbn=${ISBN}&region=11&dtl_region=${dtlRegion}`)

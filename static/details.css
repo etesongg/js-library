@@ -1,0 +1,68 @@
+/* 도서관 정보 섹션 스타일링 */
+.bookstore-info-section {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bookstore-info-section h4 {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 24px;
+}
+
+.bookstore-info-section p {
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 16px;
+}
+
+/* 지역 선택 옵션 스타일링 */
+.area-select-option {
+    margin-bottom: 20px;
+}
+
+.area-select-option p {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #444;
+}
+
+#area-select-option {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* 입력 필드가 부모 요소의 지정된 너비에 맞게 조정 */
+}
+
+/* 도서관 위치 테이블 스타일링 */
+.lib-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* 테이블과 셀의 너비를 고정 */
+}
+
+.lib-table th, .lib-table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.lib-table th {
+    background-color: #fafafa;
+    color: #333;
+}
+
+.lib-table td {
+    background-color: #ffffff;
+}
+
+.lib-table tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}

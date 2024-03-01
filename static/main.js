@@ -1,90 +1,14 @@
-// import config from "../apikey.js";
-const config = {
-	librarykey: "9d1ad31b4e1ab44b4d05bdb918eaa4447fb8168e2085f3beba4a2983c1368547"};
-
-
-const API_KEY = config.librarykey;
-
-let bookList = [];
-let keyword = "";
-
-let url = new URL(
-  `https://librarybooksbyjs.netlify.app/libSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`
-);
-
-document.addEventListener("DOMContentLoaded", function () {
-  const queryParams = new URLSearchParams(window.location.search);
-  const page = queryParams.get("page");
-});
-
-const getBooksByKeyword = async () => {
-  keyword = document.getElementById("search-input").value;
-
-  // 경고창
-  if (keyword == "") {
-    Swal.fire({
-      icon: "warning",
-      title: "검색어를 입력하세요.",
-    });
-  } else {
-    url = new URL(
-      `https://librarybooksbyjs.netlify.app/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}&pageNo=1&pageSize=5`
-    );
-
-    const response = await fetch(url);
-    const data = await response.json();
-    const numFound = await data.response.numFound.toLocaleString();
-
-    document.querySelector(
-      ".search_result"
-    ).innerHTML = `"${keyword}" 검색결과 ${numFound}건`;
-
-    bookList = data.response.docs;
-    console.log("LLL", bookList);
-    searchRender();
-  }
-};
-
-const searchRender = () => {
-  let booksHTML = bookList
-    .map(
-      (books) => `<div class="row books">
-    <div class="col-lg-4 img-content">
-        <img class="books-img-size"
-                src="${
-                  books.doc.bookImageURL ||
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEWgS0uxxEYJ0PsOb2OgwyWvC0Gjp8NUdPw&usqp=CAU"
-                }" />
-    </div>
-    <div class="col-lg-8 books-content">
-        <p id="book-name">${books.doc.bookname}</p>
-        <br>
-        <p>저자 : ${books.doc.authors}</p>
-        <p>출판사 : ${books.doc.publisher}</p>
-        <p>출판연도 : ${books.doc.publication_year}</p>
-        <p>ISBN : ${books.doc.isbn13}</p>
-        <p>대출건수 : ${books.doc.loan_count}</p>
-        <button id="seeMore-btn">자세히보기</button>
-    </div>
-</div>`
-    )
-    .join("");
-  document.getElementById("main").innerHTML = booksHTML;
-};
-
-// 인기대출도서 조회
-let popularBooks_Url = new URL(
-  `https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`
-);
-// let popularBooks_Url = new URL(`http://data4library.kr/api/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
+// 인기대출도서 조회 
+// let popularBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
+let popularBooks_Url = new URL(`http://data4library.kr/api/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
 
 // 인기대출도서 불러오는 함수
 const popularBooks = async () => {
-  try {
-    const responsePopular = await fetch(popularBooks_Url);
-    const dataPopular = await responsePopular.json();
-    const popularBooksList = dataPopular.response.docs;
-    console.log(popularBooksList);
+    try {
+        const responsePopular = await fetch(popularBooks_Url);
+        const dataPopular = await responsePopular.json();
+        const popularBooksList = dataPopular.response.docs;
+        console.log("인기대출도서",popularBooksList);
 
     const popularResult = popularBooksList
       .map((book) => {
@@ -111,10 +35,8 @@ const popularBooks = async () => {
 popularBooks();
 
 // 대출 급상승 조회
-let trendingBooks_Url = new URL(
-  `https://librarybooksbyjs.netlify.app/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-28&pageNo=1&pageSize=5`
-);
-// let trendingBooks_Url = new URL(`http://data4library.kr/api/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-27`);
+// let trendingBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-28&pageNo=1&pageSize=5`);
+let trendingBooks_Url = new URL(`http://data4library.kr/api/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-27`);
 
 // 대출 급상승 불러오는 함수
 const trendingBooks = async () => {
@@ -122,7 +44,7 @@ const trendingBooks = async () => {
     const responseTrending = await fetch(trendingBooks_Url);
     const dataTrending = await responseTrending.json();
     const trendingBooksList = dataTrending.response.results[0].result.docs;
-    console.log(trendingBooksList);
+    console.log("대출 급상승",trendingBooksList);
 
     const trendingResult = trendingBooksList
       .map((book) => {
@@ -170,8 +92,3 @@ window.onload = function () {
   });
 };
 
-function enterkey() {
-  if (window.event.keyCode == 13) {
-    getBooksByKeyword();
-  }
-}
