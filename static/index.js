@@ -52,7 +52,6 @@ const searchRender = () => {
                 }" />
     </div>
     <div class="col-lg-8 books-content">
-<<<<<<< HEAD
       <p id="book-name">${books.doc.bookname}</p>
       <br>
       <p>저자 : ${books.doc.authors}</p>
@@ -60,15 +59,7 @@ const searchRender = () => {
       <p>출판연도 : ${books.doc.publication_year}</p>
       <p>ISBN : ${books.doc.isbn13}</p>
       <p>대출건수 : ${books.doc.loan_count}</p>
-      <button id="seeMore-btn">자세히보기</button>
-=======
-        <h5>${books.doc.bookname}</h5>
-        <br>
-        <p>저자 : ${books.doc.authors}</p>
-        <p>발행처 : ${books.doc.publisher}</p>
-        <p>발행연도 : ${books.doc.publication_year}</p>
-        <button id="seeMore-btn"><a href="index.html?page=details&isbn=${books.doc.isbn13}">자세히보기</a></button>
->>>>>>> 987297ded04f606f6c2cccb9a3c02edf0393cc16
+      <button id="seeMore-btn"><a href="index.html?page=details&isbn=${books.doc.isbn13}">자세히보기</a></button>
     </div>
   </div>`
     )
