@@ -18,26 +18,26 @@ const getBooksByKeyword = async () => {
   // 경고창
   if (keyword == "") {
     Swal.fire({
-      icon: 'warning',                        
-      title: '검색어를 입력하세요.'      
-  });
+      icon: "warning",
+      title: "검색어를 입력하세요.",
+    });
+  } else {
+    url = new URL(
+      `https://librarybooksbyjs.netlify.app/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}&pageNo=1&pageSize=5`
+    );
+
+    const response = await fetch(url);
+    const data = await response.json();
+    const numFound = await data.response.numFound.toLocaleString();
+
+    document.querySelector(
+      ".search_result"
+    ).innerHTML = `"${keyword}" 검색결과 ${numFound}건`;
+
+    bookList = data.response.docs;
+    console.log("LLL", bookList);
+    searchRender();
   }
-
-  url = new URL(
-    `https://librarybooksbyjs.netlify.app/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}&pageNo=1&pageSize=5`
-  );
-
-  const response = await fetch(url);
-  const data = await response.json();
-  const numFound = await data.response.numFound.toLocaleString();
-
-  document.querySelector(
-    ".search_result"
-  ).innerHTML = `"${keyword}" 검색결과 ${numFound}건`;
-
-  bookList = data.response.docs;
-  console.log("키워드 검색결과", bookList);
-  searchRender();
 };
 
 const searchRender = () => {
@@ -65,9 +65,8 @@ const searchRender = () => {
   document.getElementById("main").innerHTML = booksHTML;
 };
 
-
 function enterkey() {
-    if (window.event.keyCode == 13) {
-      getBooksByKeyword();
-    }
+  if (window.event.keyCode == 13) {
+    getBooksByKeyword();
   }
+}
