@@ -44,7 +44,7 @@ const searchRender = () => {
   let booksHTML = bookList
     .map(
       (books) => `<div class="row books">
-    <div class="col-lg-4">
+    <div class="col-lg-4 img-content">
         <img class="books-img-size"
                 src="${
                   books.doc.bookImageURL ||
@@ -52,14 +52,16 @@ const searchRender = () => {
                 }" />
     </div>
     <div class="col-lg-8 books-content">
-        <h5>${books.doc.bookname}</h5>
-        <br>
-        <p>저자 : ${books.doc.authors}</p>
-        <p>발행처 : ${books.doc.publisher}</p>
-        <p>발행연도 : ${books.doc.publication_year}</p>
-        <button id="seeMore-btn">자세히보기</button>
+      <p id="book-name">${books.doc.bookname}</p>
+      <br>
+      <p>저자 : ${books.doc.authors}</p>
+      <p>출판사 : ${books.doc.publisher}</p>
+      <p>출판연도 : ${books.doc.publication_year}</p>
+      <p>ISBN : ${books.doc.isbn13}</p>
+      <p>대출건수 : ${books.doc.loan_count}</p>
+      <button id="seeMore-btn">자세히보기</button>
     </div>
-</div>`
+  </div>`
     )
     .join("");
   document.getElementById("main").innerHTML = booksHTML;
