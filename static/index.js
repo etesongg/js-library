@@ -57,7 +57,7 @@ const searchRender = () => {
         <p>저자 : ${books.doc.authors}</p>
         <p>발행처 : ${books.doc.publisher}</p>
         <p>발행연도 : ${books.doc.publication_year}</p>
-        <button id="seeMore-btn">자세히보기</button>
+        <button id="seeMore-btn"><a href="index.html?page=details&isbn=${books.doc.isbn13}">자세히보기</a></button>
     </div>
 </div>`
     )
