@@ -4,7 +4,7 @@ let bookList = [];
 let keyword = "";
 
 let url = new URL(
-  `https://librarybooksbyjs.netlify.app/libSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`
+  `http://data4library.kr/api/libSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`
 );
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -24,7 +24,7 @@ const getBooksByKeyword = async () => {
   }
 
   url = new URL(
-    `https://librarybooksbyjs.netlify.app/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}&pageNo=1&pageSize=5`
+    `http://data4library.kr/api/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}&pageNo=1&pageSize=5`
   );
 
   const response = await fetch(url);
