@@ -7,6 +7,11 @@ let url = new URL(
   `https://librarybooksbyjs.netlify.app/libSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`
 );
 
+let totalResults = 0
+let page = 1
+const pageSize = 10
+const groupSize = 5
+
 document.addEventListener("DOMContentLoaded", function () {
   const queryParams = new URLSearchParams(window.location.search);
   const page = queryParams.get("page");
@@ -23,7 +28,7 @@ const getBooksByKeyword = async () => {
     });
   } else {
     url = new URL(
-      `https://librarybooksbyjs.netlify.app/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}&pageNo=1&pageSize=250`
+      `https://librarybooksbyjs.netlify.app/srchBooks?format=json&title=${keyword}&authKey=${API_KEY}&pageNo=1&pageSize=30`
     );
 
     const response = await fetch(url);
@@ -37,6 +42,7 @@ const getBooksByKeyword = async () => {
     bookList = data.response.docs;
     console.log("LLL", bookList);
     searchRender();
+    paginationRender();
   }
 };
 
@@ -66,6 +72,41 @@ const searchRender = () => {
     .join("");
   document.getElementById("main").innerHTML = booksHTML;
 };
+
+const paginationRender = () => {
+  //totalResult
+  //page
+  //pageSize
+  //groupSize
+
+  //pageGroup
+  const pageGroup = Math.ceil(page / groupSize)
+  //lastPage
+  const lastPage = pageGroup * groupSize
+  //firstPage
+  const firstPage = lastPage - (groupSize - 1)
+
+  let paginationHTML =``
+  for(let i=firstPage; i<=lastPage;i++) {
+    paginationHTML+=`<li class="page-item" onclick="moveToPage(${i})"><a class="page-link">${i}</a></li>`
+  }
+  document.querySelector(".pagination").innerHTML = paginationHTML
+
+//   <nav aria-label="Page navigation example">
+//   <ul class="pagination">
+//     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+//     <li class="page-item"><a class="page-link" href="#">1</a></li>
+//     <li class="page-item"><a class="page-link" href="#">2</a></li>
+//     <li class="page-item"><a class="page-link" href="#">3</a></li>
+//     <li class="page-item"><a class="page-link" href="#">Next</a></li>
+//   </ul>
+// </nav>
+
+} 
+
+const moveToPage = (pageNum) => {
+  console.log("movetopage",pageNum)
+}
 
 // 인기대출도서 조회
 let popularBooks_Url = new URL(
