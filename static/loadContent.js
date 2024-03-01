@@ -21,12 +21,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const page = queryParams.get('page'); // URL에서 'page' 쿼리 파라미터 가져오기
 
     // page 값에 따라 다른 HTML 파일을 불러옴
-    let contentToLoad = 'includes/main.html'; // 기본값 설정
+    let contentToLoad = 'main.html'; // 기본값 설정
     if (page === 'details') {
         contentToLoad = 'details.html';
         loadScript('static/details.js');
-    } else if (page === 'list') {
-        contentToLoad = 'list.html';
     }else if (!page) {
         // 쿼리 파라미터가 없는 경우, 기본값(메인)으로 리다이렉트
         window.location.search = '?page=main';
