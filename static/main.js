@@ -1,6 +1,6 @@
 // 인기대출도서 조회 
 // let popularBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
-let popularBooks_Url = new URL(`http://data4library.kr/api/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
+let popularBooks_Url = new URL(`http://data4library.kr/api/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=10`);
 
 // 인기대출도서 불러오는 함수
 const popularBooks = async () => {
@@ -18,7 +18,7 @@ const popularBooks = async () => {
               <figure>
                   <img style="max-width:100%;" src="${book.doc.bookImageURL}" alt="${book.doc.bookname}">
               </figure>
-              <p class="book-title"><a href="${book.doc.bookDtlUrl}" target="_blank">${book.doc.bookname}</a></p>
+              <p class="book-title"><a href="index.html?page=details&isbn=${book.doc.isbn13}">${book.doc.bookname}</a></p>
               <p class="book-authers">${book.doc.authors}</p>
             </article>
         `;
@@ -36,7 +36,7 @@ popularBooks();
 
 // 대출 급상승 조회
 // let trendingBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-28&pageNo=1&pageSize=5`);
-let trendingBooks_Url = new URL(`http://data4library.kr/api/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-27`);
+let trendingBooks_Url = new URL(`http://data4library.kr/api/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-27&pageNo=1&pageSize=10`);
 
 // 대출 급상승 불러오는 함수
 const trendingBooks = async () => {
@@ -54,7 +54,7 @@ const trendingBooks = async () => {
         <figure>
             <img style="max-width:100%;" src="${book.doc.bookImageURL}" alt="${book.doc.bookname}">
         </figure>
-        <p class="book-title"><a href="${book.doc.bookDtlUrl}" target="_blank">${book.doc.bookname}</a></p>
+        <p class="book-title"><a href="index.html?page=details&isbn=${book.doc.isbn13}">${book.doc.bookname}</a></p>
         <p class="book-authers">${book.doc.authors}</p>
       </article>
     `;
@@ -74,16 +74,11 @@ trendingBooks();
 window.onload = function () {
   var swiper = new Swiper(".swiper", {
     speed: 700,
-    slidesPerView: 6,
+    slidesPerView: 5,
     spaceBetween: 40,
-    centeredSlides: true,
     autoplay: {
       delay: 3000,
       disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
     },
     navigation: {
       nextEl: ".swiper-button-next",
