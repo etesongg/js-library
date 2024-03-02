@@ -1,5 +1,6 @@
 .books {
   border-bottom: 1px solid black;
+  margin: auto;
 }
 
 .img-content {
@@ -16,6 +17,8 @@
 }
 .books-content {
   padding-top: 23px;
+  /* width:500px; */
+  padding-right: 270px;
 }
 
 #book-name {
@@ -30,9 +33,16 @@
 }
 
 #seeMore-btn {
-  margin: 20px;
-  float: right;
   border-radius: 10px;
+  position: relative;
+  right: -220px;
+  bottom: 30px;
+}
+
+@media (max-width: 991px) {
+  #seeMore-btn {
+    float: right;
+  }
 }
 
 .bd-example {
