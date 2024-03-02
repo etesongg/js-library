@@ -12,10 +12,7 @@ let page = 1;
 const pageSize = 10;
 const groupSize = 5;
 
-document.addEventListener("DOMContentLoaded", function () {
-  const queryParams = new URLSearchParams(window.location.search);
-  const page = queryParams.get("page");
-});
+
 
 const getBooksByKeyword = async () => {
   keyword = document.getElementById("search-input").value;

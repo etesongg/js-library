@@ -86,34 +86,35 @@ popularBooks();
 
 
 
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", function () {
+  const queryParams = new URLSearchParams(window.location.search);
+  const page = queryParams.get("page");
   var swiper = new Swiper("#popular-books-section .swiper", {
-    speed: 700,
-    slidesPerView: 2,
-    spaceBetween: 20,
-    centeredSlides: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    breakpoints: {
-      768: {
-        slidesPerView: 3,  //브라우저가 768보다 클 때
-        spaceBetween: 20,
-      },
-      1024: {
-        slidesPerView: 4,  //브라우저가 1024보다 클 때
-        spaceBetween: 30,
-      },
-      1200: {
-        slidesPerView: 5,  //브라우저가 1024보다 클 때
-        spaceBetween: 30,
-      },
-    },
-  });
-};
-
+          speed: 700,
+          slidesPerView: 2,
+          spaceBetween: 20,
+          centeredSlides: true,
+          autoplay: {
+              delay: 3000,
+              disableOnInteraction: false,
+          },
+          navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+          },
+          breakpoints: {
+            768: {
+              slidesPerView: 3,  //브라우저가 768보다 클 때
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 4,  //브라우저가 1024보다 클 때
+              spaceBetween: 30,
+            },
+            1200: {
+              slidesPerView: 5,  //브라우저가 1024보다 클 때
+              spaceBetween: 30,
+              },
+          },
+      });
+});
