@@ -29,7 +29,7 @@ html, body, p, a, div, section, article {padding:0; margin:0; line-height: 1.3;}
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-
+    min-height: 2.5em;
 }
 #popular-books-section .book-rank {
     position:absolute;
@@ -78,7 +78,7 @@ html, body, p, a, div, section, article {padding:0; margin:0; line-height: 1.3;}
 }
 
 #books-section figure {
-    max-height: 260px;
+    max-height: 15em;
     display: flex;
     align-items: center;
     justify-content: center;
