@@ -32,7 +32,6 @@ const getBooksByKeyword = async () => {
 
     const response = await fetch(url);
     const data = await response.json();
-    console.log("ddd", data);
     const numFound = await data.response.numFound.toLocaleString();
 
     document.querySelector(
