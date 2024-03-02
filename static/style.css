@@ -19,11 +19,19 @@ html, body, p, a, div, section, article {padding:0; margin:0; line-height: 1.3;}
 
 #popular-books-section {
     background:#d9e6e7;
-    margin-bottom:100px;
+    margin-bottom:70px;
     padding-top:50px;
 }
 
-#popular-books-section article .book-rank {
+#popular-books-section .book-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+}
+#popular-books-section .book-rank {
     position:absolute;
     top: 25px;
     left: 25px;
@@ -48,29 +56,6 @@ html, body, p, a, div, section, article {padding:0; margin:0; line-height: 1.3;}
     padding-bottom: 30px;
 }
 
-/* #popular-books-section .swiper::before {
-    content: '';
-    width: 200px;
-    height: 100%;
-    display: block;
-    background: linear-gradient(90deg, #d9e6e7 40%, transparent);
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 2;
-}
-#popular-books-section .swiper::after {
-    content: '';
-    width: 200px;
-    height: 100%;
-    display: block;
-    background: linear-gradient(90deg, transparent, #d9e6e7 60%);
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 1;
-} */
-
 #popular-books-section article {
     padding: 20px;
     max-width: 250px;
@@ -83,14 +68,33 @@ html, body, p, a, div, section, article {padding:0; margin:0; line-height: 1.3;}
 
 #books-section h2 {
     font-family: 'BMHANNAPro', sans-serif;
-    font-size: 1.5em;
-    margin-bottom: 30px;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+#books-section h2 + p {
+    margin-bottom:30px;
+    color:#aaaaaa;
+}
+
+#books-section figure {
+    max-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid #d7d7d7;
 }
 
 #books-section figure img {
     width: 100%;
-    border: 1px solid #ebebeb;
-    box-sizing: border-box;
+    max-height: 260px;
+    object-fit: cover;
+}
+
+.introduce-section {
+    margin-bottom:50px;
+    color:#aaaaaa;
 }
 
 .books-list {
