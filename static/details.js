@@ -1,3 +1,4 @@
+
 const queryParams = new URLSearchParams(window.location.search);
 const ISBN = queryParams.get("isbn");
 
@@ -43,6 +44,8 @@ async function srchDtlList() {
     publisher: data.response.detail[0].book.publisher,
     publication_year: data.response.detail[0].book.publication_year,
     isbn13: data.response.detail[0].book.isbn13,
+    description: data.response.detail[0].book.description,
+    cate: data.response.detail[0].book.class_nm,
   });
 
   initBorrowingTrendTable(); // 테이블 초기화를 데이터 로드 후에 수행
@@ -74,10 +77,12 @@ function displayBookInfo(info) {
     ".details-book-information-section article"
   ).innerHTML = `
         <h5><b>${info.title}</b></h5>
-        <p>저자: ${info.author}</p>
-        <p>출판사: ${info.publisher}</p>
-        <p>출판연도: ${info.publication_year}</p>
-        <p>ISBN: ${info.isbn13}</p>
+        <p><span>저자</span> <span>${info.author}</span></p>
+        <p><span>출판사</span> <span>${info.publisher}</span></p>
+        <p><span>출판연도</span> <span>${info.publication_year}</span></p>
+        <p><span>ISBN</span> <span>${info.isbn13}</span></p>
+        <p><span>분류</span> <span>${info.cate}</span></p>
+        <p><span>책 소개</span> <span>${info.description}</span></p>
     `;
 }
 
@@ -147,3 +152,4 @@ const filterLibRender = async (dtlRegion) => {
 
   libTable.innerHTML = filterLibHTML; // 새로운 내용 추가
 };
+
