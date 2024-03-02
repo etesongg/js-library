@@ -61,6 +61,7 @@
 
 .lib-table td {
     background-color: #ffffff;
+    word-break: break-word;
 }
 
 .lib-table tr:nth-child(odd) {
