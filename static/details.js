@@ -103,7 +103,7 @@ const initLibTable = () => {
     <tr>
         <th>도서관</th>
         <th>홈페이지</th>
-        <th>주소</th>
+        <th class="hidden-on-small-screen">주소</th>
     </tr>
     `;
 }
@@ -124,8 +124,8 @@ const filterLibRender = async (dtlRegion) => {
         filterLibHTML = libList.map((lib) => {
             return `<tr>
                 <td>${lib.lib.libName}</td>
-                <td>${lib.lib.homepage}</td>
-                <td>${lib.lib.address}</td>
+                <td><a href="${lib.lib.homepage}">${lib.lib.homepage}</a></td>
+                <td class="hidden-on-small-screen">${lib.lib.address}</td>
             </tr>`;
         }).join("");
     } else {
