@@ -4,19 +4,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (page === "main") {
     var now = new Date();
-    var today = new Date(now.setDate(now.getDate() - 3));
-
+    var today = new Date(now.setDate(now.getDate() - 4));
+  
     var year = today.getFullYear();
-    var month = ("0" + (today.getMonth() + 1)).slice(-2);
-    var day = ("0" + today.getDate()).slice(-2);
-
-    var dateString = year + "-" + month + "-" + day;
-
+    var month = ('0' + (today.getMonth() + 1)).slice(-2);
+    var day = ('0' + today.getDate()).slice(-2);
+  
+    var dateString = year + '-' + month  + '-' + day;
+  
+    console.log(dateString);
+  
     // 대출 급상승 조회
-    // let trendingBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-28&pageNo=1&pageSize=5`);
-    let trendingBooks_Url = new URL(
-      `http://data4library.kr/api/hotTrend?format=json&authKey=${API_KEY}&searchDt=${dateString}`
-    );
+    // let trendingBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/hotTrend?format=json&authKey=${API_KEY}&searchDt=${dateString}`);
+    let trendingBooks_Url = new URL(`http://data4library.kr/api/hotTrend?format=json&authKey=${API_KEY}&searchDt=${dateString}`);
 
     // 대출 급상승 불러오는 함수
     const trendingBooks = async () => {
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 인기대출도서 조회
     // let popularBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
     let popularBooks_Url = new URL(
-      `http://data4library.kr/api/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=10`
+      `http://data4library.kr/api/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=10&startDt=2024-02-01&endDt=2024-02-29`
     );
 
     // 인기대출도서 불러오는 함수
@@ -85,6 +85,36 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector(
           "#popular-books-section .swiper-wrapper"
         ).innerHTML = popularResult;
+
+        var swiper = new Swiper("#popular-books-section .swiper", {
+          speed: 700,
+          slidesPerView: 2,
+          spaceBetween: 20,
+          centeredSlides: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          breakpoints: {
+            768: {
+              slidesPerView: 3, //브라우저가 768보다 클 때
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 4, //브라우저가 1024보다 클 때
+              spaceBetween: 30,
+            },
+            1200: {
+              slidesPerView: 5, //브라우저가 1024보다 클 때
+              spaceBetween: 30,
+            },
+          },
+        });
+        
       } catch (error) {
         console.error("Fetching book data failed", error);
       }
@@ -92,33 +122,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     popularBooks();
 
-    var swiper = new Swiper("#popular-books-section .swiper", {
-      speed: 700,
-      slidesPerView: 2,
-      spaceBetween: 20,
-      centeredSlides: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 3, //브라우저가 768보다 클 때
-          spaceBetween: 20,
-        },
-        1024: {
-          slidesPerView: 4, //브라우저가 1024보다 클 때
-          spaceBetween: 30,
-        },
-        1200: {
-          slidesPerView: 5, //브라우저가 1024보다 클 때
-          spaceBetween: 30,
-        },
-      },
-    });
   }
 });
