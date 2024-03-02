@@ -1,6 +1,10 @@
 const queryParams = new URLSearchParams(window.location.search);
 const ISBN = queryParams.get('isbn');
 
+// 도서 소장 도서관 부분
+const regionInfo = libraryinfo.dtl_region;
+const selectElement = document.getElementById("area-select-option");
+
 // 도서 상세 조회
 let srchDtlList_Url = new URL(`http://data4library.kr/api/srchDtlList?format=json&authKey=${API_KEY}&isbn13=${ISBN}&loaninfoYN=Y&pageNo=1&pageSize=5`);
 
@@ -85,34 +89,48 @@ function borrowingTrend(info) {
 }
 
 
-// 도서 소장 도서관 부분
-const regionInfo = libraryinfo.dtl_region;
-const selectElement = document.getElementById("area-select-option");
 
-// option들의 click 이벤트를 추가
-selectElement.addEventListener("click", (event) => {
+
+// option들의 change 이벤트를 추가
+selectElement.addEventListener("change", (event) => {
     const selectedDtlRegion = event.target.value;
     filterLibRender(selectedDtlRegion);
 });
 
 
+const initLibTable = () => {
+    document.querySelector('.lib-table thead').innerHTML = `
+    <tr>
+        <th>도서관</th>
+        <th>홈페이지</th>
+        <th>주소</th>
+    </tr>
+    `;
+}
 
-const filterLibRender = async(dtlRegion) => {
+const filterLibRender = async (dtlRegion) => {
+    const libTable = document.querySelector(".lib-place table tbody");
+    libTable.innerHTML = '';  // 이전 내용 삭제
+    initLibTable();
+
     let collectionBookURL = new URL(`http://data4library.kr/api/libSrchByBook?format=json&authKey=${API_KEY}&isbn=${ISBN}&region=11&dtl_region=${dtlRegion}`)
     const response_ = await fetch(collectionBookURL)
     const data_ = await response_.json()
-    const libList = data_.response.libs
+    const libList = data_.response.libs;
 
-    const libTable = document.querySelector(".lib-place table tbody");
-    libTable.innerHTML = '';  // 이전 내용 삭제
+    let filterLibHTML = '';
 
-    const filterLibHTML = libList.map((lib) => {
-        return `<tr>
-            <td>${lib.lib.libName}</td>
-            <td>${lib.lib.homepage}</td>
-            <td>${lib.lib.address}</td>
-        </tr>`;
-    }).join("");
-    
+    if (libList && libList.length > 0) {
+        filterLibHTML = libList.map((lib) => {
+            return `<tr>
+                <td>${lib.lib.libName}</td>
+                <td>${lib.lib.homepage}</td>
+                <td>${lib.lib.address}</td>
+            </tr>`;
+        }).join("");
+    } else {
+        filterLibHTML = `<tr><td colspan="3">해당 지역구에는 위의 책이 소장된 도서관이 없습니다.</td></tr>`;
+    }
+
     libTable.innerHTML = filterLibHTML;  // 새로운 내용 추가
 }
