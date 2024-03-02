@@ -20,6 +20,18 @@
     font-size: 16px;
 }
 
+/* 상세 도서 정보 섹션 스타일링 */
+.details-book-information-section{
+    margin: 20px;
+    padding: 20px;
+}
+
+/* 대출 추이 섹션 스타일링 */
+.details-borrowing-trends-section{
+    margin: 20px;
+    padding: 20px;
+}
+
 /* 지역 선택 옵션 스타일링 */
 .area-select-option {
     margin-bottom: 20px;
@@ -76,4 +88,4 @@
 
 .lib-table a {
     color: black;
-  }
+}
