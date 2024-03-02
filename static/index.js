@@ -49,25 +49,21 @@ const getBooksByKeyword = async () => {
 const searchRender = () => {
   let booksHTML = bookList
     .map(
-      (books) => `<div class="row books">
-    <div class="col-lg-4 img-content">
+      (books) => `<div class="books">
+    <div class="img-content">
         <img class="books-img-size"
-                src="${
-                  books.doc.bookImageURL ||
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEWgS0uxxEYJ0PsOb2OgwyWvC0Gjp8NUdPw&usqp=CAU"
-                }" />
+          src="${ books.doc.bookImageURL ||
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEWgS0uxxEYJ0PsOb2OgwyWvC0Gjp8NUdPw&usqp=CAU"
+          }" />
     </div>
-    <div class="col-lg-8 books-content">
+    <div class="books-content">
       <p id="book-name">${books.doc.bookname}</p>
-      <br>
-      <p>저자 : ${books.doc.authors}</p>
-      <p>출판사 : ${books.doc.publisher}</p>
-      <p>출판연도 : ${books.doc.publication_year}</p>
-      <p>ISBN : ${books.doc.isbn13}</p>
-      <p>대출건수 : ${books.doc.loan_count}</p>
-      <button id="seeMore-btn"><a href="index.html?page=details&isbn=${
-        books.doc.isbn13
-      }">자세히보기</a></button>
+      <p><span>저자</span> <span>${books.doc.authors}</span></p>
+      <p><span>출판사</span> <span>${books.doc.publisher}</span></p>
+      <p><span>출판연도</span> <span>${books.doc.publication_year}</span></p>
+      <p><span>ISBN</span> <span>${books.doc.isbn13}</span></p>
+      <p><span>대출건수</span> <span>${books.doc.loan_count}</span></p>
+      <button id="seeMore-btn"><a href="index.html?page=details&isbn=${books.doc.isbn13}">자세히보기</a></button>
     </div>
   </div>`
     )

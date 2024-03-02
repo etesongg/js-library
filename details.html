@@ -1,29 +1,28 @@
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/static/details.css">
-</head>
+<link rel="stylesheet" href="/static/details.css">
 
 <main>
     <div class="container details-warp">
-        <section class="row details-book-information-section">
+        <section class="details-book-information-section">
             <!-- 상세 도서 정보 콘텐츠 -->
-            <figure class="col-12 col-md-4">
-                <!-- 도서 이미지 -->
-                
-            </figure>
-            <article class="col-12 col-md-8">
-                <!-- 도서 정보 -->
+            <h4>책 정보 자세히 보기</h4>
+            <div class="inner">
+                <figure>
+                    <!-- 도서 이미지 -->
+                    
+                </figure>
+                <article>
+                    <!-- 도서 정보 -->
 
-            </article>
+                </article>
+            </div>
         </section>
         
         <section class="details-borrowing-trends-section">
             <!-- 대출 추이 콘텐츠 -->
-                <h4>대출 추이</h4>
-            <article class="row">
+            <h4>대출 추이</h4>
+            <p>대출량과 대출순위 통계는 매월초 재집계되며, 참여도서관의 증가 등에 의해 대출량과 순위는 달라질 수 있습니다.</p>
+            <article>
                 <!-- 날짜별 대출 추이 -->
-                <h5 class="col-12">연령별 대출 순위</h5>
                 <table class="table borrowing-trend-by-age">
                     <thead>
  
@@ -56,6 +55,5 @@
             </div>
         </section>
     </div>
-    <script src="apikey.js"></script>
-    <script src="static/details.js"></script>
+    
 </main>

@@ -1,46 +1,90 @@
-/* 도서관 정보 섹션 스타일링 */
-.bookstore-info-section {
-    font-family: 'Arial', sans-serif;
-    margin: 20px;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.details-warp {
+    background:#ffffff;
+    padding: 50px 0;
+    text-align: left;
+}
+.details-warp h4 {
+    font-family: 'BMHANNAPro', sans-serif;
+    font-size:1.8em;
+    margin-bottom:10px;
+}
+.details-warp h4 + p {
+    margin-bottom: 30px;
+    font-size: 0.9em;
+    color: #aaa;
 }
 
-.bookstore-info-section h4 {
-    margin-bottom: 10px;
-    color: #333;
-    font-size: 24px;
+.details-warp > section {
+    width: calc(100% - 300px);
+    margin:50px auto 0;
+    padding-bottom:50px;
 }
 
-.bookstore-info-section p {
-    margin-bottom: 20px;
-    color: #666;
-    font-size: 16px;
+.details-warp > section:last-child {
+    margin-bottom: 0;
+    border-bottom: 0;
 }
 
 /* 상세 도서 정보 섹션 스타일링 */
-.details-book-information-section{
-    margin: 20px;
-    padding: 20px;
+.details-book-information-section h4 {
+    margin-bottom:30px;
+}
+.details-book-information-section .inner {
+    display: flex;
 }
 
-/* 대출 추이 섹션 스타일링 */
-.details-borrowing-trends-section{
-    margin: 20px;
-    padding: 20px;
+.details-book-information-section figure {
+    width: 25%;
+    margin-right: 10%;
+}
+.details-book-information-section figure img {
+    width: 100%;
+}
+.details-book-information-section article {
+    width: 65%;
+}
+.details-book-information-section article h5 {
+    margin-bottom:20px;
+}
+.details-book-information-section article p {
+    margin-bottom:10px;
+    color:#aaa;
+    display: flex;
 }
 
-/* 지역 선택 옵션 스타일링 */
-.area-select-option {
-    margin-bottom: 20px;
+.details-book-information-section article p span:first-child {
+    min-width:80px;
+    color:#333;
 }
 
-.area-select-option p {
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #444;
+.borrowing-trend-by-age {
+    text-align: center;
+}
+.borrowing-trend-by-age tbody tr:last-child td {
+    border-bottom:0;
+}
+.borrowing-trend-by-age tbody td {
+    border-color: #e6e6e6;
+}
+.borrowing-trend-by-age tbody td:nth-child(2){
+    border-right:1px solid #e6e6e6;
+    border-left:1px solid #e6e6e6;
+}
+.borrowing-trend-by-age thead {
+    background: #e3f0f1;
+}
+.borrowing-trend-by-age thead th {
+    padding:15px 0;
+}
+.borrowing-trend-by-age thead th:nth-child(2) {
+    border-right:1px solid #fff;
+    border-left:1px solid #fff;
+}
+.table>:not(:last-child)>:last-child>* {
+    border-bottom: none;
+}
+.table>:not(caption)>*>* {
+    padding:12px 0;
 }
 
 #area-select-option {
@@ -80,12 +124,59 @@
     background-color: #f9f9f9;
 }
 
+.lib-table a {
+    color: black;
+}
+
+@media screen and (max-width: 991px) {
+    .details-warp  {
+        padding:30px 0;
+    }
+    .details-warp > section {
+        width: calc(100% - 200px);
+        border-bottom:1px solid #e6e6e6;
+    }
+    .details-book-information-section .inner {
+        flex-direction: column;
+    }
+
+    .details-book-information-section article {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .details-book-information-section article p {width: 50%;}
+    .details-book-information-section article p:last-child,
+    .details-book-information-section article h5 {
+        width: 100%;
+    }
+    
+    .details-book-information-section figure {
+        width: 100%;
+        margin-bottom:30px;
+    }
+    .details-book-information-section article p span:first-child {
+        max-width: 100px;
+    }
+}
+
+@media screen and (max-width: 768px) { 
+    .details-warp  {
+        padding:10px 0;
+    }
+    .details-warp > section {
+        width: calc(100% - 100px);
+    }
+    .details-book-information-section article p {
+        width: 100%;
+    }
+    .details-book-information-section article p span:first-child {
+        max-width: 130px;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .hidden-on-small-screen {
         display: none;
     }
-}
-
-.lib-table a {
-    color: black;
 }
