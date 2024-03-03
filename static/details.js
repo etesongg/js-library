@@ -1,10 +1,9 @@
-
 const queryParams = new URLSearchParams(window.location.search);
 const ISBN = queryParams.get("isbn");
 
 // 도서 소장 도서관 부분
 const regionInfo = libraryinfo.dtl_region;
-const selectElement = document.getElementById("area-select-option");
+let selectElement = document.getElementById("area-select-option");
 
 // 도서 상세 조회
 let srchDtlList_Url = new URL(
@@ -13,12 +12,22 @@ let srchDtlList_Url = new URL(
 
 window.onload = function () {
   dropdownOptionRender();
+  // option들의 change 이벤트를 추가
+  selectElement.addEventListener("change", (event) => {
+    const selectedDtlRegion = event.target.value;
+    filterLibRender(selectedDtlRegion);
+  });
 };
 
 // 지역구 나타내는 함수 (initialization 에러로 함수 위치를 상단으로 올림)
 const dropdownOptionRender = () => {
-  let dtlRegionList = Object.entries(regionInfo);
+  selectElement = document.getElementById("area-select-option");
+  if (!selectElement) {
+    console.error("Select element not found.");
+    return;
+  }
 
+  let dtlRegionList = Object.entries(regionInfo);
   const dtlRegionHTML = dtlRegionList
     .map((region) => {
       let dtlRegion = region[0];
@@ -106,11 +115,7 @@ function borrowingTrend(info) {
   tbody.innerHTML += row; // 기존 행에 추가
 }
 
-// option들의 change 이벤트를 추가
-selectElement.addEventListener("change", (event) => {
-  const selectedDtlRegion = event.target.value;
-  filterLibRender(selectedDtlRegion);
-});
+
 
 const initLibTable = () => {
   document.querySelector(".lib-table thead").innerHTML = `
@@ -123,7 +128,7 @@ const initLibTable = () => {
 };
 
 const filterLibRender = async (dtlRegion) => {
-  const libTable = document.querySelector(".lib-place table tbody");
+  const libTable = document.querySelector(".lib-table tbody");
   libTable.innerHTML = ""; // 이전 내용 삭제
   initLibTable();
 
