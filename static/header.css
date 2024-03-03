@@ -51,10 +51,15 @@ header h1 img {
 
 /* 검색 영역 스타일 */
 #search-area {
-  width: 400px;
+  width: 380px;
   margin:20px auto;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#search-area > div {
+  width: 100%;
 }
 
 /* 입력 필드 스타일 */
@@ -97,12 +102,15 @@ button:hover {
   margin-top: 10px;
   color: #fff;
   padding-left: 5px;
+  width:100%;
+  text-align: left;
 }
 
 
 @media screen and (max-width: 768px) {
   #search-area {
     width: 300px;
+    
   }
   #search-input {
     width: 220px;

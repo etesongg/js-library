@@ -55,7 +55,7 @@
 }
 
 .bd-example {
-  padding: 1rem;
+  padding: 1rem 1rem 4rem;
 }
 
 .pagination {
@@ -101,4 +101,15 @@
   .books-content {
     width: 60.66%;
   }
+}
+
+
+@media screen and (max-width: 480px) {
+  .books {width: calc(100% - 50px); padding:20px 0;}
+  .books-content p span:first-child {display: none;}
+  .books-content p:nth-last-child(-n+3) {display: none;}
+  .books-content {width:55%;}
+  #book-name {font-size:1.1em;}
+  .books-content p {font-size:0.9em; line-height: 1.2;}
+  #seeMore-btn {font-size:0.8em;}
 }

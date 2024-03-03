@@ -10,7 +10,7 @@
   background: #e3f0f1;
   padding-top: 50px;
   width: 90%;
-  margin: 0 auto 70px;
+  margin: 0 auto;
 }
 
 #popular-books-section .book-title {
@@ -88,8 +88,8 @@
 }
 
 .introduce-section {
-  padding-bottom: 50px;
-  color: #aaaaaa;
+  padding: 20px 0 10px;
+  color: #bebebe;
 }
 
 .books-list {
@@ -103,7 +103,7 @@
 }
 .books-list article {
   width: 20%;
-  padding: 25px;
+  padding: 20px;
   padding-top: 0;
 }
 .book-authers {
@@ -118,7 +118,7 @@
     width: calc(100% - 70px);
   }
   .books-list article {
-    padding: 20px;
+    padding: 15px;
   }
 }
 @media screen and (max-width: 990px) {
@@ -136,9 +136,22 @@
   #popular-books-section .book-title {font-size: 0.9em;}
 }
 @media screen and (max-width: 768px) {
-  #popular-books-section .swiper,
+  .container {padding:0;}
+  header h1 img {max-height: 100px;}
+  #search-input {height:40px;}
+  header button {height:40px;}
+  #books-section h2 + p {width:80%; margin:0 auto 20px;}
+  .books-list article {padding:10px;}
+  #popular-books-section article {padding:15px;}
+  #popular-books-section {width:100%;}
+  .book-title {font-size:0.9em;}
+  .book-authers {font-size:0.8em;}
+
+  #popular-books-section .swiper {
+    width: 100%;
+  }
   .books-list {
-    width: 95%;
+    width: 90%;
   }
   .books-list article {
     width: 33.33%;
@@ -146,6 +159,7 @@
   .books-list article:nth-child(n+4) {
     display: none;
   }
+  .introduce-section {width:90%; margin:0 auto;}
 }
 
 .swiper-button-next {
