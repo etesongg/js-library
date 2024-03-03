@@ -13,9 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var dateString = year + "-" + month + "-" + day;
 
     // 대출 급상승 조회
-    // let trendingBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/hotTrend?format=json&authKey=${API_KEY}&searchDt=2024-02-28&pageNo=1&pageSize=5`);
     let trendingBooks_Url = new URL(
-      `http://data4library.kr/api/hotTrend?format=json&authKey=${API_KEY}&searchDt=${dateString}`
+      `https://librarybooksbyjs.netlify.app/hotTrend?format=json&authKey=${API_KEY}&searchDt=${dateString}`
     );
 
     // 대출 급상승 불러오는 함수
@@ -53,9 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
     trendingBooks();
 
     // 인기대출도서 조회
-    // let popularBooks_Url = new URL(`https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`);
     let popularBooks_Url = new URL(
-      `http://data4library.kr/api/loanItemSrch?format=json&authKey=${API_KEY}&startDt=2024-02-01&endDt=2024-02-29&pageNo=1&pageSize=10`
+      `https://librarybooksbyjs.netlify.app/loanItemSrch?format=json&authKey=${API_KEY}&startDt=2024-02-01&endDt=2024-02-29&pageNo=1&pageSize=10`
     );
 
     // 인기대출도서 불러오는 함수

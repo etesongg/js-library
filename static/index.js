@@ -4,7 +4,7 @@ let bookList = [];
 let keyword = "";
 
 let url = new URL(
-  `http://data4library.kr/api/libSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`
+  `https://librarybooksbyjs.netlify.app/libSrch?format=json&authKey=${API_KEY}&pageNo=1&pageSize=5`
 );
 
 let totalResult = 0;

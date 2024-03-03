@@ -7,7 +7,7 @@ let selectElement = document.getElementById("area-select-option");
 
 // 도서 상세 조회
 let srchDtlList_Url = new URL(
-  `http://data4library.kr/api/srchDtlList?format=json&authKey=${API_KEY}&isbn13=${ISBN}&loaninfoYN=Y`
+  `https://librarybooksbyjs.netlify.app/srchDtlList?format=json&authKey=${API_KEY}&isbn13=${ISBN}&loaninfoYN=Y`
 );
 
 window.onload = function () {
@@ -131,7 +131,7 @@ const filterLibRender = async (dtlRegion) => {
   initLibTable();
 
   let collectionBookURL = new URL(
-    `http://data4library.kr/api/libSrchByBook?format=json&authKey=${API_KEY}&isbn=${ISBN}&region=11&dtl_region=${dtlRegion}`
+    `https://librarybooksbyjs.netlify.app/libSrchByBook?format=json&authKey=${API_KEY}&isbn=${ISBN}&region=11&dtl_region=${dtlRegion}`
   );
   const response_ = await fetch(collectionBookURL);
   const data_ = await response_.json();
