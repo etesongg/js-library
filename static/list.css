@@ -72,6 +72,7 @@
 }
 .pagination li {
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 990px) {

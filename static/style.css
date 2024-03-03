@@ -98,6 +98,9 @@
   width: calc(100% - 150px);
   margin: 0 auto;
 }
+#books-section .books-list figure {
+  max-height: 250px;
+}
 .books-list article {
   width: 20%;
   padding: 25px;
@@ -127,6 +130,7 @@
     width: 25%;
     padding: 15px;
   }
+  #popular-books-section .book-title {font-size: 0.9em;}
 }
 @media screen and (max-width: 768px) {
   #popular-books-section .swiper,

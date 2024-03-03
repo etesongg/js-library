@@ -149,7 +149,7 @@
   .details-book-information-section article p {
     width: 50%;
   }
-  .details-book-information-section article p:last-child,
+  .details-book-information-section article p:nth-last-child(-n+2),
   .details-book-information-section article h5 {
     width: 100%;
   }
@@ -160,6 +160,9 @@
   }
   .details-book-information-section article p span:first-child {
     max-width: 100px;
+  }
+  .details-book-information-section article p span:last-child {
+    width: calc(100% - 110px);
   }
 }
 
