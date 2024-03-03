@@ -1,182 +1,185 @@
 .details-warp {
-    background:#ffffff;
-    padding: 50px 0;
-    text-align: left;
+  background: #ffffff;
+  padding: 50px 0;
+  text-align: left;
 }
 .details-warp h4 {
-    font-family: 'BMHANNAPro', sans-serif;
-    font-size:1.8em;
-    margin-bottom:10px;
+  font-family: "BMHANNAPro", sans-serif;
+  font-size: 1.8em;
+  margin-bottom: 10px;
 }
 .details-warp h4 + p {
-    margin-bottom: 30px;
-    font-size: 0.9em;
-    color: #aaa;
+  margin-bottom: 30px;
+  font-size: 0.9em;
+  color: #aaa;
 }
 
 .details-warp > section {
-    width: calc(100% - 300px);
-    margin:50px auto 0;
-    padding-bottom:50px;
+  width: calc(100% - 300px);
+  margin: 50px auto 0;
+  padding-bottom: 50px;
 }
 
 .details-warp > section:last-child {
-    margin-bottom: 0;
-    border-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: 0;
 }
 
 /* 상세 도서 정보 섹션 스타일링 */
 .details-book-information-section h4 {
-    margin-bottom:30px;
+  margin-bottom: 30px;
 }
 .details-book-information-section .inner {
-    display: flex;
+  display: flex;
 }
 
 .details-book-information-section figure {
-    width: 25%;
-    margin-right: 10%;
+  width: 25%;
+  margin-right: 10%;
 }
 .details-book-information-section figure img {
-    width: 100%;
+  width: 100%;
 }
 .details-book-information-section article {
-    width: 65%;
+  width: 65%;
 }
 .details-book-information-section article h5 {
-    margin-bottom:20px;
+  margin-bottom: 20px;
 }
 .details-book-information-section article p {
-    margin-bottom:10px;
-    color:#aaa;
-    display: flex;
+  margin-bottom: 10px;
+  color: #aaa;
+  display: flex;
 }
 
 .details-book-information-section article p span:first-child {
-    min-width:80px;
-    color:#333;
+  min-width: 80px;
+  color: #333;
 }
 
 .borrowing-trend-by-age {
-    text-align: center;
+  text-align: center;
 }
 .borrowing-trend-by-age tbody tr:last-child td {
-    border-bottom:0;
+  border-bottom: 0;
 }
 .borrowing-trend-by-age tbody td {
-    border-color: #e6e6e6;
+  border-color: #e6e6e6;
 }
-.borrowing-trend-by-age tbody td:nth-child(2){
-    border-right:1px solid #e6e6e6;
-    border-left:1px solid #e6e6e6;
+.borrowing-trend-by-age tbody td:nth-child(2) {
+  border-right: 1px solid #e6e6e6;
+  border-left: 1px solid #e6e6e6;
 }
 .borrowing-trend-by-age thead {
-    background: #e3f0f1;
+  background: #e3f0f1;
 }
 .borrowing-trend-by-age thead th {
-    padding:15px 0;
+  padding: 15px 0;
 }
 .borrowing-trend-by-age thead th:nth-child(2) {
-    border-right:1px solid #fff;
-    border-left:1px solid #fff;
+  border-right: 1px solid #fff;
+  border-left: 1px solid #fff;
 }
-.table>:not(:last-child)>:last-child>* {
-    border-bottom: none;
+.table > :not(:last-child) > :last-child > * {
+  border-bottom: none;
 }
-.table>:not(caption)>*>* {
-    padding:12px 0;
+.table > :not(caption) > * > * {
+  padding: 12px 0;
 }
 
 #area-select-option {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* 입력 필드가 부모 요소의 지정된 너비에 맞게 조정 */
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* 입력 필드가 부모 요소의 지정된 너비에 맞게 조정 */
 }
 
 /* 도서관 위치 테이블 스타일링 */
 .lib-table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed; /* 테이블과 셀의 너비를 고정 */
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* 테이블과 셀의 너비를 고정 */
 }
 
-.lib-table th, .lib-table td {
-    padding: 8px;
-    text-align: left;
-    border: 1px solid #ddd;
+.lib-table th,
+.lib-table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
 }
 
 .lib-table th {
-    background-color: #fafafa;
-    color: #333;
+  background-color: #fafafa;
+  color: #333;
 }
 
 .lib-table td {
-    background-color: #ffffff;
-    word-break: break-word;
+  background-color: #ffffff;
+  word-break: break-word;
 }
 
 .lib-table tr:nth-child(odd) {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 .lib-table a {
-    color: black;
+  color: black;
 }
 
 @media screen and (max-width: 991px) {
-    .details-warp  {
-        padding:30px 0;
-    }
-    .details-warp > section {
-        width: calc(100% - 200px);
-        border-bottom:1px solid #e6e6e6;
-    }
-    .details-book-information-section .inner {
-        flex-direction: column;
-    }
+  .details-warp {
+    padding: 30px 0;
+  }
+  .details-warp > section {
+    width: calc(100% - 200px);
+    border-bottom: 1px solid #e6e6e6;
+  }
+  .details-book-information-section .inner {
+    flex-direction: column;
+  }
 
-    .details-book-information-section article {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .details-book-information-section article p {width: 50%;}
-    .details-book-information-section article p:last-child,
-    .details-book-information-section article h5 {
-        width: 100%;
-    }
-    
-    .details-book-information-section figure {
-        width: 100%;
-        margin-bottom:30px;
-    }
-    .details-book-information-section article p span:first-child {
-        max-width: 100px;
-    }
+  .details-book-information-section article {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .details-book-information-section article p {
+    width: 50%;
+  }
+  .details-book-information-section article p:last-child,
+  .details-book-information-section article h5 {
+    width: 100%;
+  }
+
+  .details-book-information-section figure {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .details-book-information-section article p span:first-child {
+    max-width: 100px;
+  }
 }
 
-@media screen and (max-width: 768px) { 
-    .details-warp  {
-        padding:10px 0;
-    }
-    .details-warp > section {
-        width: calc(100% - 100px);
-    }
-    .details-book-information-section article p {
-        width: 100%;
-    }
-    .details-book-information-section article p span:first-child {
-        max-width: 130px;
-    }
+@media screen and (max-width: 768px) {
+  .details-warp {
+    padding: 10px 0;
+  }
+  .details-warp > section {
+    width: calc(100% - 100px);
+  }
+  .details-book-information-section article p {
+    width: 100%;
+  }
+  .details-book-information-section article p span:first-child {
+    max-width: 130px;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    .hidden-on-small-screen {
-        display: none;
-    }
+  .hidden-on-small-screen {
+    display: none;
+  }
 }

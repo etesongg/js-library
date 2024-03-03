@@ -12,8 +12,6 @@ let page = 1;
 const pageSize = 10;
 const groupSize = 5;
 
-
-
 const getBooksByKeyword = async () => {
   keyword = document.getElementById("search-input").value;
 
@@ -52,7 +50,8 @@ const searchRender = () => {
       (books) => `<div class="books">
     <div class="img-content">
         <img class="books-img-size"
-          src="${ books.doc.bookImageURL ||
+          src="${
+            books.doc.bookImageURL ||
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEWgS0uxxEYJ0PsOb2OgwyWvC0Gjp8NUdPw&usqp=CAU"
           }" />
     </div>
@@ -63,7 +62,9 @@ const searchRender = () => {
       <p><span>출판연도</span> <span>${books.doc.publication_year}</span></p>
       <p><span>ISBN</span> <span>${books.doc.isbn13}</span></p>
       <p><span>대출건수</span> <span>${books.doc.loan_count}</span></p>
-      <button id="seeMore-btn"><a href="index.html?page=details&isbn=${books.doc.isbn13}">자세히보기</a></button>
+      <button id="seeMore-btn"><a href="index.html?page=details&isbn=${
+        books.doc.isbn13
+      }">자세히보기</a></button>
     </div>
   </div>`
     )

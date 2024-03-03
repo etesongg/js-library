@@ -113,14 +113,11 @@ document.addEventListener("DOMContentLoaded", function () {
             },
           },
         });
-
       } catch (error) {
         console.error("Fetching book data failed", error);
       }
     };
 
     popularBooks();
-
-    
   }
 });

@@ -115,8 +115,6 @@ function borrowingTrend(info) {
   tbody.innerHTML += row; // 기존 행에 추가
 }
 
-
-
 const initLibTable = () => {
   document.querySelector(".lib-table thead").innerHTML = `
     <tr>
@@ -157,4 +155,3 @@ const filterLibRender = async (dtlRegion) => {
 
   libTable.innerHTML = filterLibHTML; // 새로운 내용 추가
 };
-
