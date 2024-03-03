@@ -130,6 +130,9 @@
     width: 25%;
     padding: 15px;
   }
+  .books-list article:nth-child(n+5) {
+    display: none;
+  }
   #popular-books-section .book-title {font-size: 0.9em;}
 }
 @media screen and (max-width: 768px) {
