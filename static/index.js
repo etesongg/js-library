@@ -38,7 +38,6 @@ const getBooksByKeyword = async () => {
 
     bookList = data.response.docs;
     totalResult = data.response.numFound;
-    console.log("LLL", bookList);
     searchRender();
     paginationRender();
   }
@@ -110,7 +109,6 @@ const paginationRender = () => {
 };
 
 const moveToPage = (pageNum) => {
-  console.log("movetopage", pageNum);
   page = pageNum;
   getBooksByKeyword();
 };

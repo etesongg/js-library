@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const responseTrending = await fetch(trendingBooks_Url);
         const dataTrending = await responseTrending.json();
         const trendingBooksList = dataTrending.response.results[0].result.docs;
-        console.log("대출 급상승", trendingBooksList);
 
         const trendingResult = trendingBooksList
           .map((book) => {
@@ -62,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const responsePopular = await fetch(popularBooks_Url);
         const dataPopular = await responsePopular.json();
         const popularBooksList = dataPopular.response.docs;
-        console.log("인기대출도서", popularBooksList);
 
         const popularResult = popularBooksList
           .map((book) => {
