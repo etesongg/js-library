@@ -51,14 +51,16 @@ header h1 img {
 
 /* 검색 영역 스타일 */
 #search-area {
-  margin-top: 20px;
-  text-align: center;
+  width: 400px;
+  margin:20px auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 /* 입력 필드 스타일 */
 #search-input {
   width: 300px;
-  height: 40px;
+  height: 48px;
   border: 2px solid #17a2b8;
   border-radius: 5px;
   padding: 0 10px;
@@ -92,6 +94,17 @@ button:hover {
 /* 검색 결과 스타일 */
 .search_result {
   display: block; /* 또는 필요에 따라 inline-block 등으로 조정 */
-  margin-top: 20px;
-  color: #333;
+  margin-top: 10px;
+  color: #fff;
+  padding-left: 5px;
+}
+
+
+@media screen and (max-width: 768px) {
+  #search-area {
+    width: 300px;
+  }
+  #search-input {
+    width: 220px;
+  }
 }
