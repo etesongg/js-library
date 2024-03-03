@@ -135,10 +135,13 @@
 @media screen and (max-width: 768px) {
   #popular-books-section .swiper,
   .books-list {
-    width: 100%;
+    width: 95%;
   }
   .books-list article {
     width: 33.33%;
+  }
+  .books-list article:nth-child(n+4) {
+    display: none;
   }
 }
 
