@@ -49,6 +49,4 @@
   
 </details>
 
-<br/>
-
-[위 사이트 접속하기](https://nationofreading.netlify.app/)
+[위 사이트 접속하기](https://librarybooksbyjs.netlify.app/index.html?page=main)
