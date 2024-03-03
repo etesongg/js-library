@@ -144,7 +144,7 @@ const filterLibRender = async (dtlRegion) => {
       .map((lib) => {
         return `<tr>
                 <td>${lib.lib.libName}</td>
-                <td><a href="${lib.lib.homepage}">${lib.lib.homepage}</a></td>
+                <td><a href="${lib.lib.homepage}" target="_blank">${lib.lib.homepage}</a></td>
                 <td class="hidden-on-small-screen">${lib.lib.address}</td>
             </tr>`;
       })

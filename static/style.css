@@ -78,6 +78,7 @@
   justify-content: center;
   overflow: hidden;
   border: 1px solid #d7d7d7;
+  max-height: 210px;
 }
 
 #books-section figure img {
