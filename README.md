@@ -2,6 +2,11 @@
 
 **독서의 민족**은 도서 정보와 서울 소재 도서관의 도서 소장 여부를 확인할 수 있는 웹 사이트입니다.
 
+## 프로젝트 개요
+
+- [Sprint Planning](https://www.figma.com/file/e4SAwvfg4JTfdrFP75rthR/JS-library?type=whiteboard&node-id=0%3A1&t=ZeUO2BllCyUhENwx-1) 
+- [와이어프레임](https://www.figma.com/file/4Tq5yWe8W0lRl1m8SQAsab/%EB%8F%85%EC%84%9C%EC%9D%98%EB%AF%BC%EC%A1%B1-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?type=design&node-id=0%3A1&mode=design&t=nWgW7KvznXD7lgA6-1)
+
 ## 사용 기술 스택
 
 - **프론트엔드**: HTML, CSS, JavaScript, Bootstrap, Swiper
