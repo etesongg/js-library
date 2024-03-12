@@ -29,8 +29,12 @@
 ## 스크린샷
 ![main](https://github.com/etesongg/js-library/assets/55964387/ee5172ed-69d8-4e2a-bbaf-0e461d6507f5)
 
+<details>
+  <summary> 전체 시나리오 </summary>
 
-![main](https://github.com/etesongg/js-library/assets/55964387/2137642c-9d8b-4af8-bb73-9becbfb1228e)
+   ![main](https://github.com/etesongg/js-library/assets/55964387/2137642c-9d8b-4af8-bb73-9becbfb1228e)
+
+</details>
 
 <details>
   <summary> 반응형 화면 보기 </summary>
